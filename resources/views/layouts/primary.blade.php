@@ -21,6 +21,7 @@
 <!-- Page Wrapper -->
 
 @yield('main_section')
+@if(session('message')) {{session('message')}} @endif
 
 
 <!-- Scroll to Top Button-->

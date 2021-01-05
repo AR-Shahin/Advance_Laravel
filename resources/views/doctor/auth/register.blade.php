@@ -26,22 +26,25 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Register as Doctor!</h1>
                                     </div>
-                                    <form class="user">
+                                    <form class="user" method="post" action="{{route('doctor.register')}}">
+                                        @csrf
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Your Name">
+                                            <input type="text" class="form-control form-control-user @error('name') is-invalid @enderror" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Your Name" name="name" value="{{old('name')}}">
+                                            <span class="text-danger">{{($errors->has('name'))? ($errors->first('name')) : ''}}</span>
                                         </div>
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                                            <input type="email" class="form-control form-control-user @error('email') is-invalid @enderror" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email" value="{{old('email')}}">
+                                            <span class="text-danger">{{($errors->has('email'))? ($errors->first('email')) : ''}}</span>
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                                            <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror" id="exampleInputPassword" placeholder="Password" name="password">
+                                            <span class="text-danger">{{($errors->has('password'))? ($errors->first('password')) : ''}}</span>
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Confirm Password">
+                                            <input type="password" class="form-control form-control-user @error('password_confirmation') is-invalid @enderror" id="exampleInputPassword" placeholder="Confirm Password" name="password_confirmation">
+                                            <span class="text-danger">{{($errors->has('password_confirmation'))? ($errors->first('password_confirmation')) : ''}}</span>
                                         </div>
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                            Login
-                                        </a>
+                                        <button class="btn btn-primary btn-user btn-block">Register</button>
                                         <hr>
                                         <a href="index.html" class="btn btn-google btn-user btn-block">
                                             <i class="fab fa-google fa-fw"></i> Login with Google
