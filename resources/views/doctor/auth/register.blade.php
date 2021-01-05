@@ -1,11 +1,11 @@
 @extends('layouts.primary')
-@section('title','Doctor | Login')
+@section('title','Doctor | Register')
 
 @section('main_section')
     <style>
         body{
-            background-color: #4e73df;
-            background-image: linear-gradient(180deg,#4e73df 10%,#224abe 100%);
+            background-color: #34495e;
+            background-image: linear-gradient(180deg,#2c3e50 10%,#224abe 100%);
             background-size: cover;
         }
     </style>
@@ -24,9 +24,12 @@
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back Doctor!</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Register as Doctor!</h1>
                                     </div>
                                     <form class="user">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Your Name">
+                                        </div>
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
                                         </div>
@@ -34,10 +37,7 @@
                                             <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
                                         </div>
                                         <div class="form-group">
-                                            <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Remember Me</label>
-                                            </div>
+                                            <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Confirm Password">
                                         </div>
                                         <a href="index.html" class="btn btn-primary btn-user btn-block">
                                             Login
@@ -55,7 +55,7 @@
                                         <a class="small" href="forgot-password.html">Forgot Password?</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="{{route('doctor.register')}}">Create an Account!</a>
+                                        <a class="small" href="{{route('doctor.login')}}">Already have an account?</a>
                                     </div>
                                 </div>
                             </div>
