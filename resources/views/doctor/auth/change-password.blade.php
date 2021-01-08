@@ -37,7 +37,6 @@
 
 @push('script')
 <script>
-
     $(document).ready(function () {
         //Validate form data
         $('#doctorChangePasswordForm').validate({

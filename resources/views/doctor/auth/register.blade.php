@@ -26,7 +26,7 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Register as Doctor!</h1>
                                     </div>
-                                    <form class="user" method="post" action="{{route('doctor.register')}}">
+                                    <form class="user" method="post" action="{{route('doctor.register')}}" id="doctorRegisterForm">
                                         @csrf
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-user @error('name') is-invalid @enderror" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Your Name" name="name" value="{{old('name')}}">
@@ -37,7 +37,7 @@
                                             <span class="text-danger">{{($errors->has('email'))? ($errors->first('email')) : ''}}</span>
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror" id="exampleInputPassword" placeholder="Password" name="password">
+                                            <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror" id="password" placeholder="Password" name="password">
                                             <span class="text-danger">{{($errors->has('password'))? ($errors->first('password')) : ''}}</span>
                                         </div>
                                         <div class="form-group">
@@ -72,3 +72,39 @@
 
     </div>
 @stop
+
+@push('script')
+<script>
+    $(document).ready(function () {
+        //Validate form data
+        $('#doctorRegisterForm').validate({
+            rules: {
+                name: {
+                    required: true
+                },
+                email: {
+                    required: true,
+                },
+                password: {
+                    required: true
+                },
+                password_confirmation: {
+                    required: true,
+                    equalTo: '#password'
+                },
+            },
+            errorElement: 'span',
+            errorPlacement: function (error, element) {
+                error.addClass('invalid-feedback');
+                element.closest('.form-group').append(error);
+            },
+            highlight: function (element, errorClass, validClass) {
+                $(element).addClass('is-invalid');
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).removeClass('is-invalid').addClass('is-valid');
+            }
+        });
+    });
+</script>
+@endpush
