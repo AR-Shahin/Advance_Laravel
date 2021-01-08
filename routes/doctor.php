@@ -15,10 +15,16 @@ Route::name('doctor.')->namespace('Doctor')->prefix('doctor')->group(function ()
         Route::post('register','RegistrationController@registrationProcess')->name('register');
         Route::post('login','LoginController@loginProcess')->name('login');
     });
-    //Authencate Routes
+    //Authenticate Routes
     Route::middleware('auth:doctor')->group(function (){
-        Route::post('logout','Auth\LoginController@logout')->name('logout');
+        Route::namespace('Auth')->group(function (){
+            Route::post('logout','LoginController@logout')->name('logout');
+            Route::get('change-password','ChangePasswordController@showChangePasswordForm')->name('change-password');
+            Route::patch('change-password','ChangePasswordController@processChangePassword')->name('change-password');
+        });
+
         Route::get('dashboard','DashboardController@index')->name('dashboard');
+
     });
 
 

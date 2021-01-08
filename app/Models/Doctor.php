@@ -12,7 +12,7 @@ class Doctor extends Authenticatable
 {
     use HasFactory,Notifiable;
 
-    protected $fillable =['name','email','password'];
+    protected $fillable =['name','email','password','id'];
 
     public function setPasswordAttribute($value){
         $this->attributes['password'] = Hash::make($value);
