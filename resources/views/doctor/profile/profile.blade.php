@@ -170,9 +170,21 @@
                                         <button class="btn btn-sm btn-danger remove_experience" type="button"><i class="fa fa-minus-circle"></i> Remove</button>
                                     </div>
                                 </div>
+                                <div class="form-group mt-4">
+                                    <label for="">Upload Certificate <small>(You can choose one or multiple)</small></label>
+                                    <div class="input-group dynamic_certificate mb-3">
+                                        <input type="file" class="form-control" name="file[]">
+                                        <button class="btn btn-dark btn-sm add_more_file_btn" type="button"><i class="fa fa-plus-circle"></i> Add More</button>
+                                    </div>
+                                    <div class="dynamic_certificate_file mt-2" style="display: none;">
+                                        <div class="input-group form-group">
+                                            <input type="file" class="form-control" name="file[]">
+                                            <button class="btn btn-danger btn-sm delete_more_file_btn" type="button"><i class="fa fa-minus-circle"></i> Remove</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
                 </form>
             </div>
         </div>
@@ -234,7 +246,16 @@
             $(this).parents(".parents_clone_experience").remove();
         }
     })
-
+    });
+    
+    //dynamic certificate add
+    $('body').on('click','.add_more_file_btn',function () {
+        var html = $('.dynamic_certificate_file').html();
+        $('.dynamic_certificate').after(html);
+    });
+    //remove dynamic certificate
+    $('body').on('click','.delete_more_file_btn',function () {
+        $(this).parents('.input-group').remove();
     })
 
 
