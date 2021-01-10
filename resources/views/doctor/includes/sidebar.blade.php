@@ -35,6 +35,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Login Screens:</h6>
                 <a class="collapse-item" href="{{route('doctor.change-password')}}">Password Change</a>
+                <a class="collapse-item" href="{{route('doctor.update-profile')}}">Update Profile</a>
             </div>
         </div>
     </li>
