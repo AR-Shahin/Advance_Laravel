@@ -243,7 +243,7 @@
             denyButtonText: `No`,
         }).then((result) => {
             if (result.isConfirmed) {
-            $(this).parents(".parents_clone_experience").remove();
+            $(this).parent(".parents_clone_experience").remove();
         }
     })
     });
@@ -255,7 +255,7 @@
     });
     //remove dynamic certificate
     $('body').on('click','.delete_more_file_btn',function () {
-        $(this).parents('.input-group').remove();
+        $(this).parent('.input-group').remove();
     })
 
 
