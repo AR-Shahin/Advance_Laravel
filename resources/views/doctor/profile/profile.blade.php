@@ -15,7 +15,9 @@
                 <div class="card-header">
                     <h3 class="text-primary">Update Profile</h3>
                 </div>
-                <form action="">
+                <form action="{{route('doctor.update-profile')}}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    {{method_field('PATCH')}}
                     <div class="card-body">
                         <div class="row">
                             <div class="col-12 col-md-6">
@@ -116,35 +118,9 @@
                                 <div class="form-group">
                                     <input type="checkbox" name="is_experience" id="experience_checkbox" value="1" {{ $doctor->is_medelist == 1 ? 'checked' : '' }}> Any Experience?
                                 </div>
-                                <div class="doctor_experience" style="display: none">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <div class="form-group">
-                                                <label for="">Start Date : </label>
-                                                <input type="date" name="start_date" placeholder="Start date" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="form-group">
-                                                <label for="">End Date : </label>
-                                                <input type="date" name="end_date" placeholder="End date" class="form-control">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="">Clinic Name</label>
-                                                <input type="text" class="form-control" name="clinic_name" placeholder="Clinic Name">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button style="float: right" id="addMoreExperience" class="btn btn-sm btn-success"><i class="fa fa-plus-circle"></i> Add More Experience</button>
-                                </div>
 
-                                <div class="clone_doctor_experience mt-4" style="display: none">
-                                    <div class="parents_clone_experience">
-                                        <h5 class="text-primary mt-3">Experience</h5>
+                                <div class="doctor_experience" style="display: none">
+                                    <div class="if_multiple_experience">
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="form-group">
@@ -167,9 +143,40 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <button class="btn btn-sm btn-danger remove_experience" type="button"><i class="fa fa-minus-circle"></i> Remove</button>
                                     </div>
+                                    <!-- clone experience start from here -->
+                                    <div class="clone_doctor_experience mt-4" style="display: none">
+                                        <div class="parents_clone_experience">
+                                            <h5 class="text-primary mt-3">Experience</h5>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label for="">Start Date : </label>
+                                                        <input type="date" name="start_date" placeholder="Start date" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label for="">End Date : </label>
+                                                        <input type="date" name="end_date" placeholder="End date" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="form-group">
+                                                        <label for="">Clinic Name</label>
+                                                        <input type="text" class="form-control" name="clinic_name" placeholder="Clinic Name">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button class="btn btn-sm btn-danger remove_experience" type="button"><i class="fa fa-minus-circle"></i> Remove</button>
+                                        </div>
+                                    </div>
+                                    <!-- clone experience end here -->
+                                    <button style="float: right" id="addMoreExperience" class="btn btn-sm btn-success"><i class="fa fa-plus-circle"></i> Add More Experience</button>
                                 </div>
+
                                 <div class="form-group mt-4">
                                     <label for="">Upload Certificate <small>(You can choose one or multiple)</small></label>
                                     <div class="input-group dynamic_certificate mb-3">
@@ -185,6 +192,10 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group text-right">
+                            <button class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Update Profile</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -232,7 +243,7 @@
     $('#addMoreExperience').click(function (e) {
         e.preventDefault();
         var html = $('.clone_doctor_experience').html();
-        $('.doctor_experience').after(html);
+        $('.if_multiple_experience').after(html);
     })
     //remove clone experience
     $('body').on('click','.remove_experience',function () {
@@ -247,7 +258,7 @@
         }
     })
     });
-    
+
     //dynamic certificate add
     $('body').on('click','.add_more_file_btn',function () {
         var html = $('.dynamic_certificate_file').html();

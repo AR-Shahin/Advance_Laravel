@@ -17,4 +17,7 @@ class ProfileController extends Controller
             ]);
         }
     }
+    public function updateProfile(Request $request){
+        return $request->all();
+    }
 }

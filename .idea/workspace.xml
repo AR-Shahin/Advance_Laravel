@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ba9fc12e-e57a-4bd5-af43-fcc760096a28" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Doctor/ProfileController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Doctor/ProfileController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/doctor/profile/profile.blade.php" afterPath="$PROJECT_DIR$/resources/views/doctor/profile/profile.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/doctor.php" afterPath="$PROJECT_DIR$/routes/doctor.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -14,29 +16,41 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.5477707">
+    <splitter split-orientation="vertical" split-proportion="0.593949">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-          <file leaf-file-name="profile.blade.php" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/resources/views/doctor/profile/profile.blade.php">
+          <file leaf-file-name="doctor.php" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/routes/doctor.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="65">
-                  <caret line="144" column="67" lean-forward="false" selection-start-line="144" selection-start-column="44" selection-end-line="144" selection-end-column="67" />
-                  <folding>
-                    <element signature="e#7716#7737#0#HTML" expanded="true" />
-                    <element signature="e#9301#9321#0#HTML" expanded="true" />
-                    <element signature="e#9553#9574#0#HTML" expanded="true" />
-                  </folding>
+                <state relative-caret-position="297">
+                  <caret line="31" column="7" lean-forward="true" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
+                  <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="doctor.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/routes/doctor.php">
+          <file leaf-file-name="ProfileController.php" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Doctor/ProfileController.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="508">
-                  <caret line="28" column="100" lean-forward="false" selection-start-line="28" selection-start-column="100" selection-end-line="28" selection-end-column="100" />
+                <state relative-caret-position="210">
+                  <caret line="20" column="31" lean-forward="false" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
                   <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="profile.blade.php" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/resources/views/doctor/profile/profile.blade.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1053">
+                  <caret line="121" column="54" lean-forward="false" selection-start-line="121" selection-start-column="54" selection-end-line="121" selection-end-column="54" />
+                  <folding>
+                    <element signature="e#4109#4131#0#HTML" expanded="true" />
+                    <element signature="e#7867#7888#0#HTML" expanded="true" />
+                    <element signature="e#9768#9789#0#HTML" expanded="true" />
+                    <element signature="e#12024#12044#0#HTML" expanded="true" />
+                    <element signature="e#12853#12875#0#HTML" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -48,9 +62,15 @@
           <file leaf-file-name="profile.blade.php" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/resources/views/doctor/profile/profile.blade.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="83">
-                  <caret line="245" column="26" lean-forward="false" selection-start-line="245" selection-start-column="26" selection-end-line="245" selection-end-column="26" />
-                  <folding />
+                <state relative-caret-position="80">
+                  <caret line="220" column="134" lean-forward="false" selection-start-line="220" selection-start-column="134" selection-end-line="220" selection-end-column="134" />
+                  <folding>
+                    <element signature="e#4109#4131#0#HTML" expanded="true" />
+                    <element signature="e#7867#7888#0#HTML" expanded="true" />
+                    <element signature="e#9768#9789#0#HTML" expanded="true" />
+                    <element signature="e#12024#12044#0#HTML" expanded="true" />
+                    <element signature="e#12853#12875#0#HTML" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -93,11 +113,11 @@
         <option value="$PROJECT_DIR$/resources/views/doctor/auth/change-password.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/doctor/auth/register.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/doctor/dashboard.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Doctor/ProfileController.php" />
-        <option value="$PROJECT_DIR$/routes/doctor.php" />
         <option value="$PROJECT_DIR$/resources/views/doctor/includes/sidebar.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/doctor/includes/topbar.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/primary.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Doctor/ProfileController.php" />
+        <option value="$PROJECT_DIR$/routes/doctor.php" />
         <option value="$PROJECT_DIR$/resources/views/doctor/profile/profile.blade.php" />
       </list>
     </option>
@@ -548,18 +568,18 @@
       <workItem from="1610173353074" duration="1389000" />
       <workItem from="1610250267176" duration="6028000" />
       <workItem from="1610279729601" duration="3436000" />
-      <workItem from="1610433164834" duration="1019000" />
+      <workItem from="1610433164834" duration="3585000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32326000" />
+    <option name="totallyTimeSpent" value="34892000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="1" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1831307" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -618,9 +638,11 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#7716#7737#0#HTML" expanded="true" />
-            <element signature="e#9301#9321#0#HTML" expanded="true" />
-            <element signature="e#9553#9574#0#HTML" expanded="true" />
+            <element signature="e#4109#4131#0#HTML" expanded="true" />
+            <element signature="e#7867#7888#0#HTML" expanded="true" />
+            <element signature="e#9768#9789#0#HTML" expanded="true" />
+            <element signature="e#12024#12044#0#HTML" expanded="true" />
+            <element signature="e#12853#12875#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -653,9 +675,11 @@
         <state relative-caret-position="1344">
           <caret line="64" column="101" lean-forward="false" selection-start-line="64" selection-start-column="101" selection-end-line="64" selection-end-column="101" />
           <folding>
-            <element signature="e#7716#7737#0#HTML" expanded="true" />
-            <element signature="e#9301#9321#0#HTML" expanded="true" />
-            <element signature="e#9553#9574#0#HTML" expanded="true" />
+            <element signature="e#4109#4131#0#HTML" expanded="true" />
+            <element signature="e#7867#7888#0#HTML" expanded="true" />
+            <element signature="e#9768#9789#0#HTML" expanded="true" />
+            <element signature="e#12024#12044#0#HTML" expanded="true" />
+            <element signature="e#12853#12875#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -944,14 +968,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Doctor/ProfileController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="12" column="41" lean-forward="false" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/doctor/includes/topbar.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="529">
@@ -959,22 +975,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Doctor/ProfileController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="20" column="31" lean-forward="false" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/routes/doctor.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="508">
-          <caret line="28" column="100" lean-forward="false" selection-start-line="28" selection-start-column="100" selection-end-line="28" selection-end-column="100" />
+        <state relative-caret-position="297">
+          <caret line="31" column="7" lean-forward="true" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/doctor/profile/profile.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="65">
-          <caret line="144" column="67" lean-forward="false" selection-start-line="144" selection-start-column="44" selection-end-line="144" selection-end-column="67" />
+        <state relative-caret-position="80">
+          <caret line="220" column="134" lean-forward="false" selection-start-line="220" selection-start-column="134" selection-end-line="220" selection-end-column="134" />
           <folding>
-            <element signature="e#7716#7737#0#HTML" expanded="true" />
-            <element signature="e#9301#9321#0#HTML" expanded="true" />
-            <element signature="e#9553#9574#0#HTML" expanded="true" />
+            <element signature="e#4109#4131#0#HTML" expanded="true" />
+            <element signature="e#7867#7888#0#HTML" expanded="true" />
+            <element signature="e#9768#9789#0#HTML" expanded="true" />
+            <element signature="e#12024#12044#0#HTML" expanded="true" />
+            <element signature="e#12853#12875#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>

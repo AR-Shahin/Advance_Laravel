@@ -27,6 +27,7 @@ Route::name('doctor.')->namespace('Doctor')->prefix('doctor')->group(function ()
 
         Route::get('dashboard','DashboardController@index')->name('dashboard');
         Route::get('update-profile','ProfileController@showUpdateProfileForm')->name('update-profile');
+        Route::patch('update-profile','ProfileController@updateProfile')->name('update-profile');
 
     });
 
