@@ -39,6 +39,9 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="form-group" id="image_preview">
+                                    <img src="" alt="" id="dynamic_preview_image" style="max-height: 100px;max-width: 100px;border-radius: 50%">
+                                </div>
                                 <div class="form-group">
                                     <label for="">Avatar : </label>
                                     <input type="file" class="form-control" id="avatar" name="avatar">
@@ -267,7 +270,19 @@
     //remove dynamic certificate
     $('body').on('click','.delete_more_file_btn',function () {
         $(this).parent('.input-group').remove();
-    })
+    });
+
+    //upload image preview
+    $('#image_preview').hide();
+    $('body').on('change','#avatar',function () {
+        $('#image_preview').fadeIn();
+        var reader = new FileReader();
+        reader.onload = (e) => {
+            $('#dynamic_preview_image').attr('src',e.target.result);
+        }
+        reader.readAsDataURL(this.files[0]);
+    });
+    
 
 
 </script>
