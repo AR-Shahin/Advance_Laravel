@@ -50,7 +50,11 @@
                                     <label for="">Country : </label>
                                     <select name="country_id" id="country_id" class="form-control">
                                         <option value="">Select a Country</option>
-                                        <option value="">Bangladesh</option>
+                                        @forelse($countries as $country)
+                                            <option value="{{$country->id}}" {{$doctor->country_id == $country->id ? 'selected' : ''}}>{{$country->name}}</option>
+                                        @empty
+                                            <option value="">Empty</option>
+                                        @endforelse
                                     </select>
                                 </div>
                                 <div class="row no-gutters">
@@ -68,35 +72,60 @@
                                     </div>
                                 </div>
                                 <div class="form-group text-left">
-                                    <input type="checkbox" class="d-inline" id="is_offday" value="1" {{$doctor->is_offday==1 ? 'checked' : ''}}> Is Offday ?
+                                    <input type="checkbox" class="d-inline" id="is_offday" value="1" {{$doctor->is_offday==1 ? 'checked' : ''}} name="is_offday"> Is Offday ?
                                     <div class="hidden_off_day mt-2" style="display: none;">
-                                        <select name="" id="" class="form-control">
-                                            <option value="">Saturday</option>
-                                            <option value="">Sunday</option>
-                                            <option value="">Monday</option>
-                                            <option value="">Tuesday</option>
-                                            <option value="">Wednesday</option>
-                                            <option value="">Thursday</option>
-                                            <option value="">Friday</option>
+                                        <select name="offday" id="" class="form-control">
+                                            <option value="Saturday" {{ $doctor->offday == 'Saturday' ? 'selected' : '' }}>Saturday</option>
+                                            <option value="Sunday" {{ $doctor->offday == 'Sunday' ? 'selected' : '' }}>Sunday</option>
+                                            <option value="Monday" {{ $doctor->offday == 'Monday' ? 'selected' : '' }}>Monday</option>
+                                            <option value="Tuesday" {{ $doctor->offday == 'Tuesday' ? 'selected' : '' }}>Tuesday</option>
+                                            <option value="Wednesday" {{ $doctor->offday == 'Wednesday' ? 'selected' : '' }}>Wednesday</option>
+                                            <option value="Thursday" {{ $doctor->offday == 'Thursday' ? 'selected' : '' }}>Thursday</option>
+                                            <option value="Friday" {{ $doctor->offday == 'Friday' ? 'selected' : '' }}>Friday</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Degree : </label>
-                                    <table class="table table-bordered" id="dynamic_degree">
-                                        <tr>
-                                            <td>
-                                                <input type="text" class="form-control form-control-sm key_list" placeholder="Degree" id="key" name="education[0][key]">
-                                            </td>
-                                            <td>
-                                                <input type="text" class="form-control form-control-sm value_list" placeholder="Institution" id="value" name="education[0][value]">
-                                            </td>
-                                            <td>
-                                                <button type="button" id="degree_add" class="btn btn-success"> <i class="fa fa-plus-circle"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    </table>
+                                    <!-- Show degree if has -->
+                                    {{--{{dd($doctor->education)}}--}}
+                                    @php $ed_counter = 0; @endphp
+                                    @if($doctor->education)
+                                        @foreach($doctor->education as $education)
+                                            <table class="table table-bordered" id="dynamic__degree">
+                                                <tr>
+                                                    <td>
+                                                        <input type="text" class="form-control form-control-sm key_list" placeholder="Degree" id="key" name="education[{{$ed_counter}}][key]" value="{{$education['key']}}">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control form-control-sm value_list" placeholder="Institution" id="value" name="education[{{$ed_counter}}][value]" value="{{$education['value']}}">
+                                                    </td>
+                                                    <td>
+                                                        <button type="button" id="degree__add" class="btn btn-success" disabled> <i class="fa fa-plus-circle" disabled=""></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            @php $ed_counter ++; @endphp
+                                        @endforeach
+                                    @endif
+                                        <table class="table table-bordered" id="dynamic_degree">
+                                            <input type="hidden" id="counter" value="{{ $ed_counter }}">
+                                            <tr>
+                                                <td>
+                                                    <input type="text" class="form-control form-control-sm key_list" placeholder="Degree" id="key" name="education[{{$ed_counter}}][key]">
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control form-control-sm value_list" placeholder="Institution" id="value" name="education[{{$ed_counter}}][value]">
+                                                </td>
+                                                <td>
+                                                    <button type="button" id="degree_add" class="btn btn-success"> <i class="fa fa-plus-circle"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+
                                 </div>
                                 <div class="form-group">
                                     <label for="">Bio : </label>
@@ -206,6 +235,11 @@
 @stop
 @push('script')
 <script>
+    //show if has offday
+    if($("#is_offday").prop("checked") == true)
+    {
+        $('.hidden_off_day').fadeIn();
+    }
     //hide show off day
     $('#is_offday').click(function () {
         if($('#is_offday').prop('checked')){
@@ -215,15 +249,17 @@
         }
     });
     //append dynamic degree
-    var i = 0;
+    let counter = $('#counter').val();
     $('#degree_add').click(function () {
         var key = $('#key').val();
         var value = $('#value').val();
-        i++;
-        var html = '<tr class="dynamic-added" id="row'+i+'">';
-        html+= '<td><input type="text" class="form-control form-control-sm key_list" placeholder="Degree" id="key" name="education['+i+'][key]" value="'+key+'"></td>';
-        html+= '<td><input type="text" class="form-control form-control-sm value_list" placeholder="Institution" id="value" name="education['+i+'][value]" value="'+value+'"></td>';
-        html += '<td><button type="button" name="remove" id="'+i+'" class="btn btn-danger fa fa-window-close btn_remove_degree"></button></td></tr>';
+//        key = '';
+//        value = '';
+        counter ++;
+        var html = '<tr class="dynamic-added" id="row'+counter+'">';
+        html+= '<td><input type="text" class="form-control form-control-sm key_list" placeholder="Degree" id="key" name="education['+counter+'][key]" value="'+key+'"></td>';
+        html+= '<td><input type="text" class="form-control form-control-sm value_list" placeholder="Institution" id="value" name="education['+counter+'][value]" value="'+value+'"></td>';
+        html += '<td><button type="button" name="remove" id="'+counter+'" class="btn btn-danger fa fa-window-close btn_remove_degree"></button></td></tr>';
 
         $('#dynamic_degree').append(html);
     });
@@ -282,7 +318,7 @@
         }
         reader.readAsDataURL(this.files[0]);
     });
-    
+
 
 
 </script>
