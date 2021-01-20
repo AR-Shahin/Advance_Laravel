@@ -36,4 +36,12 @@ class Doctor extends Authenticatable
         }
         $this->attributes['education'] = json_encode($education);
     }
+
+    public function experiences(){
+       return $this->hasMany(Experience::class, 'doctor_id','id');
+    }
+
+    public function certificates(){
+       return $this->hasMany(Certificate::class, 'doctor_id');
+    }
 }

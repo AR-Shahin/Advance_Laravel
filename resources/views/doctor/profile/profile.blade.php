@@ -14,6 +14,8 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="text-primary">Update Profile</h3>
+                    @php $ex_counter = $doctor->experiences->count(); @endphp
+                    <input type="text" id="ex_counter" value="{{$ex_counter}}">
                 </div>
                 <form action="{{route('doctor.update-profile')}}" method="post" enctype="multipart/form-data">
                     @csrf
@@ -45,6 +47,12 @@
                                 <div class="form-group">
                                     <label for="">Avatar : </label>
                                     <input type="file" class="form-control" id="avatar" name="avatar">
+                                    @error('avatar')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-md-12 mb-2" id="image_hidden">
+                                    <img src="{{ asset($doctor->avatar) }}" style="max-height: 50px; border-radius:50%;">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Country : </label>
@@ -109,21 +117,21 @@
                                             @php $ed_counter ++; @endphp
                                         @endforeach
                                     @endif
-                                        <table class="table table-bordered" id="dynamic_degree">
-                                            <input type="hidden" id="counter" value="{{ $ed_counter }}">
-                                            <tr>
-                                                <td>
-                                                    <input type="text" class="form-control form-control-sm key_list" placeholder="Degree" id="key" name="education[{{$ed_counter}}][key]">
-                                                </td>
-                                                <td>
-                                                    <input type="text" class="form-control form-control-sm value_list" placeholder="Institution" id="value" name="education[{{$ed_counter}}][value]">
-                                                </td>
-                                                <td>
-                                                    <button type="button" id="degree_add" class="btn btn-success"> <i class="fa fa-plus-circle"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        </table>
+                                    <table class="table table-bordered" id="dynamic_degree">
+                                        <input type="hidden" id="counter" value="{{ $ed_counter }}">
+                                        <tr>
+                                            <td>
+                                                <input type="text" class="form-control form-control-sm key_list" placeholder="Degree" id="key" name="education[{{$ed_counter}}][key]">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control form-control-sm value_list" placeholder="Institution" id="value" name="education[{{$ed_counter}}][value]">
+                                            </td>
+                                            <td>
+                                                <button type="button" id="degree_add" class="btn btn-success"> <i class="fa fa-plus-circle"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </table>
 
 
                                 </div>
@@ -138,7 +146,24 @@
                                 <div class="form-group">
                                     <label for="">Resume: </label>
                                     <input type="file" class="form-control" id="resume" name="resume" value="{{$doctor->resume}}">
+                                    @error('resume')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+
                                 </div>
+                                @if($doctor->resume)
+                                    <div class="form-group">
+                                        <table class="table table-sm bordered">
+                                            <tr>
+                                                <th>File</th><th>Actions</th>
+                                            </tr>
+                                            <tr>
+                                                <td>{{$doctor->resume}}</td>
+                                                <td class="text-right"><a href="{{asset($doctor->resume)}}" class="btn btn-sm btn-primary" target="_blank"> <i class="fa fa-eye"></i></a></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                @endif
                                 <div class="form-group">
                                     <input type="checkbox" name="is_medelist" value="1" {{ $doctor->is_medelist == 1 ? 'checked' : '' }}> Is Medalist?
                                 </div>
@@ -147,23 +172,58 @@
                                 <blockquote class="custom_block">
                                     Your Experience!
                                 </blockquote>
+
+                                @if($ex_counter > 0)
+                                    @foreach($doctor->experiences as $experience)
+                                        <div class="clone_doctor__experience mt-4">
+                                            <div class="parents_clone_experience">
+                                                <h5 class="text-primary mt-3">Experience</h5>
+                                                <div class="row">
+                                                    <input type="hidden" name="experience_id[]" value="{{ $experience->id }}">
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label for="">Start Date : </label>
+                                                            <input type="date" name="start_date[]" placeholder="Start date" class="form-control" value="{{$experience->start_date}}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label for="">End Date : </label>
+                                                            <input type="date" name="end_date[]" placeholder="End date" class="form-control" value="{{$experience->end_date}}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label for="">Clinic Name</label>
+                                                            <input type="text" class="form-control" name="clinic_name[]" placeholder="Clinic Name" value="{{$experience->clinic_name}}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                @endif
+
                                 <div class="form-group">
-                                    <input type="checkbox" name="is_experience" id="experience_checkbox" value="1" {{ $doctor->is_medelist == 1 ? 'checked' : '' }}> Any Experience?
+                                    <input type="checkbox" name="is_experience" id="experience_checkbox" value="1" > Any Experience?
                                 </div>
 
                                 <div class="doctor_experience" style="display: none">
                                     <div class="if_multiple_experience">
+                                        <input type="hidden" name="experience_id[]">
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <label for="">Start Date : </label>
-                                                    <input type="date" name="start_date" placeholder="Start date" class="form-control">
+                                                    <input type="date" name="start_date[]" placeholder="Start date" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <label for="">End Date : </label>
-                                                    <input type="date" name="end_date" placeholder="End date" class="form-control">
+                                                    <input type="date" name="end_date[]" placeholder="End date" class="form-control">
                                                 </div>
                                             </div>
                                         </div>
@@ -171,7 +231,7 @@
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <label for="">Clinic Name</label>
-                                                    <input type="text" class="form-control" name="clinic_name" placeholder="Clinic Name">
+                                                    <input type="text" class="form-control" name="clinic_name[]" placeholder="Clinic Name">
                                                 </div>
                                             </div>
                                         </div>
@@ -179,18 +239,19 @@
                                     <!-- clone experience start from here -->
                                     <div class="clone_doctor_experience mt-4" style="display: none">
                                         <div class="parents_clone_experience">
+                                            <input type="hidden" name="experience_id[]">
                                             <h5 class="text-primary mt-3">Experience</h5>
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="form-group">
                                                         <label for="">Start Date : </label>
-                                                        <input type="date" name="start_date" placeholder="Start date" class="form-control">
+                                                        <input type="date" name="start_date[]" placeholder="Start date[]" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form-group">
                                                         <label for="">End Date : </label>
-                                                        <input type="date" name="end_date" placeholder="End date" class="form-control">
+                                                        <input type="date" name="end_date[]" placeholder="End date" class="form-control">
                                                     </div>
                                                 </div>
                                             </div>
@@ -198,7 +259,7 @@
                                                 <div class="col-12">
                                                     <div class="form-group">
                                                         <label for="">Clinic Name</label>
-                                                        <input type="text" class="form-control" name="clinic_name" placeholder="Clinic Name">
+                                                        <input type="text" class="form-control" name="clinic_name[]" placeholder="Clinic Name">
                                                     </div>
                                                 </div>
                                             </div>
@@ -212,15 +273,44 @@
                                 <div class="form-group mt-4">
                                     <label for="">Upload Certificate <small>(You can choose one or multiple)</small></label>
                                     <div class="input-group dynamic_certificate mb-3">
-                                        <input type="file" class="form-control" name="file[]">
+                                        <input type="file" class="form-control" name="certificate[]" value="{{old('certificate')}}">
                                         <button class="btn btn-dark btn-sm add_more_file_btn" type="button"><i class="fa fa-plus-circle"></i> Add More</button>
+                                        @error('certificate')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="dynamic_certificate_file mt-2" style="display: none;">
                                         <div class="input-group form-group">
-                                            <input type="file" class="form-control" name="file[]">
+                                            <input type="file" class="form-control" name="certificate[]"value="{{old('certificate')}}" >
                                             <button class="btn btn-danger btn-sm delete_more_file_btn" type="button"><i class="fa fa-minus-circle"></i> Remove</button>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="form-group">
+                                    @if($doctor->certificates->count() != 0)
+                                        <table class="table table-bordered">
+                                            <thead>
+                                            <tr>
+                                                <th>SL</th>
+                                                <th class="text-center">Actions</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @forelse($doctor->certificates as $key => $certificate)
+                                                <tr class="control-group">
+                                                    <input type="hidden" name="update_certificate[{{ $certificate->id }}]" value="{{ $certificate->id }}">
+                                                    <td>{{$key + 1}}</td>
+                                                    <td class="text-center">
+                                                        <a href="{{asset($certificate->documents)}}" class="btn btn-sm btn-info" target="_blank"><i class="fa fa-eye"></i></a>
+                                                        <a class="btn btn-sm btn-danger documents-remove"><i class="fa fa-trash"></i></a>
+                                                    </td>
+                                                </tr>
+                                            @empty
+                                            @endforelse
+                                            </tbody>
+                                        </table>
+                                    @endif
+
                                 </div>
                             </div>
                         </div>
@@ -253,8 +343,8 @@
     $('#degree_add').click(function () {
         var key = $('#key').val();
         var value = $('#value').val();
-//        key = '';
-//        value = '';
+        key = '';
+        value = '';
         counter ++;
         var html = '<tr class="dynamic-added" id="row'+counter+'">';
         html+= '<td><input type="text" class="form-control form-control-sm key_list" placeholder="Degree" id="key" name="education['+counter+'][key]" value="'+key+'"></td>';
@@ -319,6 +409,10 @@
         reader.readAsDataURL(this.files[0]);
     });
 
+    //documents/ certificate remove
+    $("body").on("click",".documents-remove",function(){
+        $(this).parents(".control-group").remove();
+    });
 
 
 </script>

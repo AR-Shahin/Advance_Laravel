@@ -15,10 +15,10 @@ class CreateDoctorsTable extends Migration
     {
         Schema::create('doctors', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('designation_id')
+            $table->foreignId('designation_id')->nullable()
                 ->index()
                 ->constrained()
-                ->onDelete('cascade')->nullable();
+                ->onDelete('cascade');
             $table->string('name');
             $table->string('email',32)->unique();
             $table->string('password',255);
