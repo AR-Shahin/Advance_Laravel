@@ -15,7 +15,7 @@
                 <div class="card-header">
                     <h3 class="text-primary">Update Profile</h3>
                     @php $ex_counter = $doctor->experiences->count(); @endphp
-                    <input type="text" id="ex_counter" value="{{$ex_counter}}">
+                    <input type="hidden" id="ex_counter" value="{{$ex_counter}}">
                 </div>
                 <form action="{{route('doctor.update-profile')}}" method="post" enctype="multipart/form-data">
                     @csrf
@@ -60,6 +60,17 @@
                                         <option value="">Select a Country</option>
                                         @forelse($countries as $country)
                                             <option value="{{$country->id}}" {{$doctor->country_id == $country->id ? 'selected' : ''}}>{{$country->name}}</option>
+                                        @empty
+                                            <option value="">Empty</option>
+                                        @endforelse
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Designation : </label>
+                                    <select name="designation_id" id="designation_id" class="form-control">
+                                        <option value="">Select a Designation</option>
+                                        @forelse($designations as $designation)
+                                            <option value="{{$designation->id}}" {{$doctor->designation_id == $designation->id ? 'selected' : ''}}>{{$designation->name}}</option>
                                         @empty
                                             <option value="">Empty</option>
                                         @endforelse

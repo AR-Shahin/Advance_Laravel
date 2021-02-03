@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Doctor;
 use App\Http\Controllers\Controller;
 use App\Models\Certificate;
 use App\Models\Country;
+use App\Models\Designations;
 use App\Models\Doctor;
 use App\Models\Experience;
 use function differenceBetweenTwoDate;
@@ -21,22 +22,24 @@ class ProfileController extends Controller
         if(View::exists('doctor.profile.profile')){
             return \view('doctor.profile.profile',[
                 'doctor' => Doctor::findOrfail(Auth::guard('doctor')->id()),
-                'countries' => Country::select('id','name')->latest()->get()
+                'countries' => Country::select('id','name')->latest()->get(),
+                'designations' => Designations::select('id','name')->latest()->get()
             ]);
         }
     }
     public function updateProfile(Request $request){
         $id = Auth::guard('doctor')->id();
-        // return $request->all();
+        // return $request->clinic_name;
         $request->validate([
             'resume' => ['mimes:pdf'],
             'avatar' => ['mimes:jpg,png,jpeg'],
 //            'certificate' => ['mimes:jpg,png,jpeg,pdf'],
         ]);
         //experience
-        $experience = array_filter($request->start_date, function($filter){
+        $experience = array_filter($request->clinic_name, function($filter){
             return ! empty($filter);
         });
+     //   return $experience;
         $counter = sizeof($experience);
         $experience_in_month = 0;
         for($i =0 ;$i<$counter;$i++){
@@ -127,14 +130,17 @@ class ProfileController extends Controller
         }
         $certificates = Certificate::where('doctor_id',$id)->get();
         $cer_count =  $certificates->count();
-       $x =  $request->update_certificate;
-       if($x == ''){
-           $x = 0;
-       }
-//return count($request->update_certificate);
+//        if(!$request->update_certificate &&  $cer_count == 1){
+//            $temp  = Certificate::where('doctor_id',$id)->first();
+//             if(file_exists($temp->documents)){
+//                 unlink($temp->documents);
+//             }
+//            $temp->delete();
+//        }
+
         //delete
         if($cer_count>0){
-            if($cer_count != $x){
+            if($cer_count != $request->update_certificate){
                 if($request->update_certificate == true && $certificates){
                     foreach ($request->update_certificate as $item) {
                         foreach ($certificates as $certificate){
