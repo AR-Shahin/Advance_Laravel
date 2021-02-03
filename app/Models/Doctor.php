@@ -50,4 +50,10 @@ class Doctor extends Authenticatable
     public function country(){
         return $this->belongsTo(Country::class);
     }
+
+    public function feedbacks(){
+     return $this->hasMany(Feedback::class,'doctor_id','id');
+    }
+
+
 }

@@ -45,7 +45,7 @@
                                 <li class="list-group-item"><b>Designation : </b> {{$doctor->designation->name ?? 'Null'}}</li>
                                 <li class="list-group-item"><b>Country : </b> {{$doctor->country->name ?? 'Null'}}</li>
                                 <li class="list-group-item">
-                                    <span><b>Ratting : </b></span>
+                                    <span><b>Ratting ({{$doctor->feedbacks()->count()}}) : </b></span>
                                     <i class="fa fa-star mr-1"></i>
                                     <i class="fa fa-star mr-1"></i>
                                     <i class="fa fa-star mr-1"></i>
