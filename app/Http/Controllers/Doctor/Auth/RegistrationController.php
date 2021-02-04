@@ -6,7 +6,9 @@ use App\Events\DoctorCreatedEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DoctorRegister;
 use App\Models\Doctor;
+use function auth;
 use function event;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use function md5;
@@ -33,12 +35,28 @@ class RegistrationController extends Controller
         if($create){
             event(new DoctorCreatedEvent($create));
             return redirect()
-                    ->action([LoginController::class,'showLoginForm'])
-                    ->with('message','Your Account has been Created!. Please verify');
+                ->action([LoginController::class,'showLoginForm'])
+                ->with('message','Your Account has been Created!. Please verify');
         }
     }
 
     public function verifyDoctorAccount($token){
-        return $token;
+        $doctor = Doctor::where('verified_token',$token)->first();
+        if(!$doctor){
+            //invalid token
+
+            return redirect()
+                ->action([LoginController::class,'showLoginForm'])
+                ->with('message','Invalid Token :)');
+        }
+        //update
+        $doctor->update([
+            'verified_token' => null,
+            'verified' => true
+        ]);
+
+        auth()->guard('doctor')->login($doctor);
+        return redirect(RouteServiceProvider::DOCTOR);
+
     }
 }
