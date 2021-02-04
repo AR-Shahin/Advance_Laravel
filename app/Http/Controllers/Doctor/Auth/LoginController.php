@@ -9,6 +9,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
+use function isCredentialVerified;
 use function isDoctorActive;
 use function redirect;
 
@@ -25,11 +26,18 @@ class LoginController extends Controller
     public function loginProcess(DoctorLogin $request){
         $credentials = $request->validated();
         if(Auth::guard('doctor')->attempt($credentials)){
-            if(isDoctorActive($request->input('email'))){
-                return redirect(RouteServiceProvider::DOCTOR);
+            //check verify
+            if(isCredentialVerified($request->input('email'),'DOCTOR')){
+                //check status
+                if(isDoctorActive($request->input('email'))){
+                    return redirect(RouteServiceProvider::DOCTOR);
+                }else{
+                    Auth::guard('doctor')->logout();
+                    return redirect()->back()->with('message','Your Status is Inactive.');
+                }
             }else{
                 Auth::guard('doctor')->logout();
-                return redirect()->back()->with('message','Your Status is Inactive.');
+                return redirect()->back()->with('message','Your Not verified');
             }
         }else{
             return redirect()->back()->with('message','Not Match!');

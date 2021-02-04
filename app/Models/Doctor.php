@@ -26,7 +26,9 @@ class Doctor extends Authenticatable
     public function scopeIsActive($query){
         return $query->where('is_active',1);
     }
-
+    public function scopeIsVerified($query){
+        return $query->where('verified',1);
+    }
     public function setEducationAttribute($values){
         $education = [];
         foreach ($values as $value){

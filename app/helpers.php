@@ -29,3 +29,16 @@ function differenceBetweenTwoDate($date1, $date2) : int
 
     return $diff;
 }
+
+
+if(!function_exists('isCredentialVerified')){
+    function isCredentialVerified($email,$flag=null) : bool{
+        switch ($flag){
+            case 'DOCTOR' :
+              if(Doctor::where('email',$email)->IsVerified()->first()){
+                  return true;
+              }
+              return false;
+        }
+    }
+}
