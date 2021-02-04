@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\DoctorCreatedEvent;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -18,6 +19,9 @@ class Doctor extends Authenticatable
     protected $guarded = [];
     protected $casts = [
         'education' => 'array'
+    ];
+    protected $dispatchesEvents =[
+        'created' => DoctorCreatedEvent::class,
     ];
     public function setPasswordAttribute($value){
         $this->attributes['password'] = Hash::make($value);
@@ -40,11 +44,11 @@ class Doctor extends Authenticatable
     }
 
     public function experiences(){
-       return $this->hasMany(Experience::class, 'doctor_id','id');
+        return $this->hasMany(Experience::class, 'doctor_id','id');
     }
 
     public function certificates(){
-       return $this->hasMany(Certificate::class, 'doctor_id');
+        return $this->hasMany(Certificate::class, 'doctor_id');
     }
     public function designation(){
         return $this->belongsTo(Designations::class);
@@ -54,7 +58,7 @@ class Doctor extends Authenticatable
     }
 
     public function feedbacks(){
-     return $this->hasMany(Feedback::class,'doctor_id','id');
+        return $this->hasMany(Feedback::class,'doctor_id','id');
     }
 
 
