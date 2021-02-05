@@ -7,6 +7,10 @@ class DoctorRepository implements DoctorInterface{
 
     public function getAllDoctor()
     {
-        return Doctor::with(['designation','country','feedbacks'])->IsActive()->latest()->get();
+        return Doctor::IsActive()->latest()->get();
+    }
+    public function getDoctorDetails(Doctor $slug)
+    {
+        return $slug;
     }
 }

@@ -54,7 +54,7 @@
                                 </li>
                             </ul>
                             <div class="card-body">
-                                <a href="#" class="card-link btn btn-sm btn-outline-primary"><i class="fa fa-eye"></i> View</a>
+                                <a href="{{route('doctor.details',$doctor->slug)}}" class="card-link btn btn-sm btn-outline-primary"><i class="fa fa-eye"></i> View</a>
                                 <a href="#" class="card-link btn btn-sm btn-outline-success" style="float: right"><i class="fa fa-plus"></i> Appoint</a>
                             </div>
                         </div>

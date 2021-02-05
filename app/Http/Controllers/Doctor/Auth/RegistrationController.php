@@ -11,6 +11,7 @@ use function event;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Str;
 use function md5;
 use function redirect;
 use const true;
@@ -28,6 +29,7 @@ class RegistrationController extends Controller
     public function registrationProcess(DoctorRegister $request){
         $create = Doctor::create([
             'name' => $request->input('name'),
+            'slug' => Str::slug($request->input('name'),'-'),
             'email' => $request->input('email'),
             'password' => $request->input('password'),
             'verified_token' => md5($request->input('email')) . uniqid('Shahin',true)

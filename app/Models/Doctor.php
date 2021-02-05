@@ -17,12 +17,25 @@ class Doctor extends Authenticatable
 
     //protected $fillable =['name','email','password','id'];
     protected $guarded = [];
+    protected $with;
+    public function __construct(array $attributes = [])
+    {
+        //parent::__construct($attributes);
+        $this->with = ['country','designation','experiences','certificates','feedbacks'];
+    }
+
     protected $casts = [
         'education' => 'array'
     ];
     protected $dispatchesEvents =[
         'created' => DoctorCreatedEvent::class,
     ];
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     public function setPasswordAttribute($value){
         $this->attributes['password'] = Hash::make($value);
     }
@@ -33,6 +46,8 @@ class Doctor extends Authenticatable
     public function scopeIsVerified($query){
         return $query->where('verified',1);
     }
+
+    //muteors
     public function setEducationAttribute($values){
         $education = [];
         foreach ($values as $value){
@@ -60,6 +75,8 @@ class Doctor extends Authenticatable
     public function feedbacks(){
         return $this->hasMany(Feedback::class,'doctor_id','id');
     }
+
+
 
 
 }

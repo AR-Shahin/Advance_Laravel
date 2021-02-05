@@ -14,6 +14,7 @@ class AddNewColumnsInDoctorTable extends Migration
     public function up()
     {
         Schema::table('doctors', function (Blueprint $table) {
+            $table->string('slug')->nullable()->unique()->after('email');
             $table->boolean('verified')->default(false);
             $table->string('verified_token')->nullable();
         });
@@ -27,7 +28,7 @@ class AddNewColumnsInDoctorTable extends Migration
     public function down()
     {
         Schema::table('doctors', function (Blueprint $table) {
-            //
+            $table->dropColumn(['verified','verified_token']);
         });
     }
 }

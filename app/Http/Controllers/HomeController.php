@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use function abort;
+use App\Models\Doctor;
 use App\Repository\Doctor\DoctorInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
@@ -21,5 +22,10 @@ class HomeController extends Controller
             return view('home',$this->data);
         }
         abort(404);
+    }
+
+    public function getDoctorDetails(Doctor $slug){
+       // return Doctor::find($slug);
+        return $this->doctor->getDoctorDetails($slug);
     }
 }
