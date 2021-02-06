@@ -29,7 +29,7 @@ class RegistrationController extends Controller
     public function registrationProcess(DoctorRegister $request){
         $create = new Doctor();
         $create->name = $request->input('name');
-        $create->slug = Str::slug($request->input('name'),'-');
+        $create->slug = $request->input('name');
         $create->email = $request->input('email');
         $create->password = $request->input('password');
         $create->verified_token = md5($request->input('email')) . uniqid('Shahin',true);

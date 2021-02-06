@@ -2,21 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba9fc12e-e57a-4bd5-af43-fcc760096a28" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/js/components/ExampleComponent.vue" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/avatars/1690822641016337.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/avatars/1690829434874225.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/avatars/1690866348875910.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/avatars/1690921089642151.jpg" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Events/DoctorCreatedEvent.php" afterPath="$PROJECT_DIR$/app/Events/DoctorCreatedEvent.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Doctor/Auth/RegistrationController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Doctor/Auth/RegistrationController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Listeners/DoctorCreatedListener.php" afterPath="$PROJECT_DIR$/app/Listeners/DoctorCreatedListener.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Mail/DoctorVerificationMail.php" afterPath="$PROJECT_DIR$/app/Mail/DoctorVerificationMail.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.json" afterPath="$PROJECT_DIR$/composer.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Doctor.php" afterPath="$PROJECT_DIR$/app/Models/Doctor.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2021_01_05_061628_create_doctors_table.php" afterPath="$PROJECT_DIR$/database/migrations/2021_01_05_061628_create_doctors_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app.js" afterPath="$PROJECT_DIR$/public/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/js/app.js" afterPath="$PROJECT_DIR$/resources/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/mails/doctor_verifycation.blade.php" afterPath="$PROJECT_DIR$/resources/views/mails/doctor_verifycation.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/views/home.blade.php" afterPath="$PROJECT_DIR$/resources/views/frontend/home.blade.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -43,8 +36,8 @@
       <file leaf-file-name="RegistrationController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Doctor/Auth/RegistrationController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="37" column="17" lean-forward="false" selection-start-line="37" selection-start-column="12" selection-end-line="37" selection-end-column="17" />
+            <state relative-caret-position="651">
+              <caret line="31" column="47" lean-forward="false" selection-start-line="31" selection-start-column="47" selection-end-line="31" selection-end-column="47" />
               <folding>
                 <element signature="e#52#86#0#PHP" expanded="true" />
               </folding>
@@ -52,32 +45,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="single_doctor.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/frontend/single_doctor.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="487">
-              <caret line="261" column="56" lean-forward="true" selection-start-line="261" selection-start-column="56" selection-end-line="261" selection-end-column="56" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="home.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/frontend/home.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="40" column="77" lean-forward="false" selection-start-line="40" selection-start-column="77" selection-end-line="40" selection-end-column="77" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Doctor.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Doctor.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Models/Doctor.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="77">
-              <caret line="60" column="31" lean-forward="false" selection-start-line="60" selection-start-column="20" selection-end-line="60" selection-end-column="31" />
-              <folding />
+            <state relative-caret-position="168">
+              <caret line="47" column="5" lean-forward="true" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
+              <folding>
+                <element signature="e#30#64#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -143,17 +118,17 @@
         <option value="$PROJECT_DIR$/resources/js/app.js" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2021_01_05_061628_create_doctors_table.php" />
         <option value="$PROJECT_DIR$/app/Mail/DoctorVerificationMail.php" />
         <option value="$PROJECT_DIR$/resources/views/mails/doctor_verifycation.blade.php" />
         <option value="$PROJECT_DIR$/app/Events/DoctorCreatedEvent.php" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/app/Listeners/DoctorCreatedListener.php" />
         <option value="$PROJECT_DIR$/storage/logs/laravel.log" />
-        <option value="$PROJECT_DIR$/app/Models/Doctor.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Doctor/Auth/RegistrationController.php" />
         <option value="$PROJECT_DIR$/resources/views/frontend/single_doctor.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/frontend/home.blade.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2021_01_05_061628_create_doctors_table.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Doctor/Auth/RegistrationController.php" />
+        <option value="$PROJECT_DIR$/app/Models/Doctor.php" />
       </list>
     </option>
   </component>
@@ -512,18 +487,18 @@
       <workItem from="1612443592735" duration="8586000" />
       <workItem from="1612491177063" duration="11768000" />
       <workItem from="1612530734323" duration="8129000" />
-      <workItem from="1612583526685" duration="1759000" />
+      <workItem from="1612583526685" duration="2544000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="113421000" />
+    <option name="totallyTimeSpent" value="114206000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18161094" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2781155" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -617,6 +592,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -624,6 +600,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="20" column="38" lean-forward="false" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -647,6 +624,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="361">
           <caret line="24" column="10" lean-forward="false" selection-start-line="24" selection-start-column="10" selection-end-line="24" selection-end-column="10" />
+          <folding>
+            <element signature="e#33#67#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -661,6 +641,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="22" column="50" lean-forward="true" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -698,6 +679,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-168">
           <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="39" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -713,13 +695,6 @@
         <state relative-caret-position="315">
           <caret line="19" column="26" lean-forward="false" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2021_02_04_130333_add_new_columns_in_doctor_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="16" column="73" lean-forward="false" selection-start-line="16" selection-start-column="73" selection-end-line="16" selection-end-column="73" />
         </state>
       </provider>
     </entry>
@@ -785,14 +760,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
           <caret line="9" column="107" lean-forward="false" selection-start-line="9" selection-start-column="107" selection-end-line="9" selection-end-column="107" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2021_01_05_061628_create_doctors_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="22" column="48" lean-forward="true" selection-start-line="22" selection-start-column="48" selection-end-line="22" selection-end-column="48" />
-          <caret line="23" column="42" lean-forward="false" selection-start-line="23" selection-start-column="42" selection-end-line="23" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -899,21 +866,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Doctor.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/frontend/home.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="60" column="31" lean-forward="false" selection-start-line="60" selection-start-column="20" selection-end-line="60" selection-end-column="31" />
+        <state relative-caret-position="168">
+          <caret line="40" column="77" lean-forward="false" selection-start-line="40" selection-start-column="77" selection-end-line="40" selection-end-column="77" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Doctor/Auth/RegistrationController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="37" column="17" lean-forward="false" selection-start-line="37" selection-start-column="12" selection-end-line="37" selection-end-column="17" />
-          <folding>
-            <element signature="e#52#86#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -925,11 +882,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/frontend/home.blade.php">
+    <entry file="file://$PROJECT_DIR$/database/migrations/2021_02_04_130333_add_new_columns_in_doctor_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="16" column="73" lean-forward="false" selection-start-line="16" selection-start-column="73" selection-end-line="16" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2021_01_05_061628_create_doctors_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="21" column="34" lean-forward="false" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Doctor/Auth/RegistrationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="651">
+          <caret line="31" column="47" lean-forward="false" selection-start-line="31" selection-start-column="47" selection-end-line="31" selection-end-column="47" />
+          <folding>
+            <element signature="e#52#86#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Doctor.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
-          <caret line="40" column="77" lean-forward="false" selection-start-line="40" selection-start-column="77" selection-end-line="40" selection-end-column="77" />
-          <folding />
+          <caret line="47" column="5" lean-forward="true" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
+          <folding>
+            <element signature="e#30#64#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

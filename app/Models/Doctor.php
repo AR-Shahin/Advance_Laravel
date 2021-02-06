@@ -4,12 +4,13 @@ namespace App\Models;
 
 use App\Events\DoctorCreatedEvent;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 use function is_null;
 use function json_encode;
+use function uniqid;
 
 class Doctor extends Authenticatable
 {
@@ -39,7 +40,9 @@ class Doctor extends Authenticatable
     public function setPasswordAttribute($value){
         $this->attributes['password'] = Hash::make($value);
     }
-
+    public function setSlugAttribute($value){
+        $this->attributes['slug'] = Str::slug($value,'-').'-'.uniqid();
+    }
     public function scopeIsActive($query){
         return $query->where('is_active',1);
     }
