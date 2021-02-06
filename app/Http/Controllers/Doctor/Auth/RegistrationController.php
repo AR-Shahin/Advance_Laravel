@@ -27,14 +27,14 @@ class RegistrationController extends Controller
     }
 
     public function registrationProcess(DoctorRegister $request){
-        $create = Doctor::create([
-            'name' => $request->input('name'),
-            'slug' => Str::slug($request->input('name'),'-'),
-            'email' => $request->input('email'),
-            'password' => $request->input('password'),
-            'verified_token' => md5($request->input('email')) . uniqid('Shahin',true)
-        ]);
-        if($create){
+        $create = new Doctor();
+        $create->name = $request->input('name');
+        $create->slug = Str::slug($request->input('name'),'-');
+        $create->email = $request->input('email');
+        $create->password = $request->input('password');
+        $create->verified_token = md5($request->input('email')) . uniqid('Shahin',true);
+
+        if($create->save()){
             event(new DoctorCreatedEvent($create));
             return redirect()
                 ->action([LoginController::class,'showLoginForm'])
@@ -46,7 +46,6 @@ class RegistrationController extends Controller
         $doctor = Doctor::where('verified_token',$token)->first();
         if(!$doctor){
             //invalid token
-
             return redirect()
                 ->action([LoginController::class,'showLoginForm'])
                 ->with('message','Invalid Token :)');

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Find a Doctor.')
+@section('title','Doctor Application')
 @section('content')
     <!-- NabVar -->
     <div class="wrapping" style="overflow:hidden;">
@@ -39,7 +39,6 @@
                             <img class="card-img-top w-100" src="{{asset($doctor->avatar)}}" alt="{{$doctor->name}}" height="270px">
                             <div class="card-body">
                                 <h5 class="card-title">{{$doctor->name}}</h5>
-                                <p class="card-text">{{$doctor->bio}}</p>
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item"><b>Designation : </b> {{$doctor->designation->name ?? 'Null'}}</li>

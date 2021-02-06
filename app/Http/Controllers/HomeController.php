@@ -18,14 +18,18 @@ class HomeController extends Controller
 
     public function index(){
         $this->data['doctors'] = $this->doctor->getAllDoctor();
-        if(View::exists('home')){
-            return view('home',$this->data);
+        if(View::exists('frontend.home')){
+            return view('frontend.home',$this->data);
         }
         abort(404);
     }
 
     public function getDoctorDetails(Doctor $slug){
-       // return Doctor::find($slug);
-        return $this->doctor->getDoctorDetails($slug);
+       if(View::exists('frontend.single_doctor')){
+           return \view('frontend.single_doctor',[
+               'doctor' => $this->doctor->getDoctorDetails($slug)
+           ]);
+       }
+
     }
 }

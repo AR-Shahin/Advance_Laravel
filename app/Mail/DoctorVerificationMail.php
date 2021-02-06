@@ -8,6 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\View;
+use function info;
 
 class DoctorVerificationMail extends Mailable
 {
@@ -31,6 +32,7 @@ class DoctorVerificationMail extends Mailable
      */
     public function build()
     {
+        info('im from mail');
         if(View::exists('mails.doctor_verifycation')){
             return $this->view('mails.doctor_verifycation');
         }
