@@ -6,6 +6,7 @@ use App\Events\DoctorCreatedEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DoctorRegister;
 use App\Models\Doctor;
+use App\Notifications\DoctorVerificationNotification;
 use function auth;
 use function event;
 use App\Providers\RouteServiceProvider;
@@ -35,7 +36,10 @@ class RegistrationController extends Controller
         $create->verified_token = md5($request->input('email')) . uniqid('Shahin',true);
 
         if($create->save()){
-            event(new DoctorCreatedEvent($create));
+            //send verification link using Event Listener
+           // event(new DoctorCreatedEvent($create));
+            //send verification link using Notification
+            $create->notify(new DoctorVerificationNotification($create));
             return redirect()
                 ->action([LoginController::class,'showLoginForm'])
                 ->with('message','Your Account has been Created!. Please verify');
