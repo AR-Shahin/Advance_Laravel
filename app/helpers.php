@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Doctor;
+use App\Models\Patient;
 
 if(!function_exists('isDoctorActive')){
     function isDoctorActive($email) :bool {
@@ -38,6 +39,10 @@ if(!function_exists('isCredentialVerified')){
               if(Doctor::where('email',$email)->IsVerified()->first()){
                   return true;
               }
+            case 'PATIENT':
+                if(Patient::where('email',$email)->IsVerified()->first()){
+                    return true;
+                }
               return false;
         }
     }
