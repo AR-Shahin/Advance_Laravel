@@ -30,7 +30,7 @@ class DoctorCreatedListener implements ShouldQueue
      */
     public function handle($event)
     {
-        info($event->doctor->email);
+        //info($event->doctor->email);
         $email = $event->doctor->email;
         Mail::to($email)->queue(new DoctorVerificationMail($event->doctor));
     }

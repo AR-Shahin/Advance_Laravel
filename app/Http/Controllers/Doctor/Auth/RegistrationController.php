@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Doctor\Auth;
 
+use function abort;
 use App\Events\DoctorCreatedEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DoctorRegister;
@@ -37,7 +38,7 @@ class RegistrationController extends Controller
 
         if($create->save()){
             //send verification link using Event Listener
-          //  event(new DoctorCreatedEvent($create));
+            //  event(new DoctorCreatedEvent($create));
             //send verification link using Notification
             $create->notify(new DoctorVerificationNotification($create));
             return redirect()
@@ -46,13 +47,14 @@ class RegistrationController extends Controller
         }
     }
 
-    public function verifyDoctorAccount($token){
-        $doctor = Doctor::where('verified_token',$token)->first();
-        if(!$doctor){
+    public function verifyDoctorAccount($token)
+    {
+        $doctor = Doctor::where('verified_token', $token)->first();
+        if (!$doctor) {
             //invalid token
             return redirect()
-                ->action([LoginController::class,'showLoginForm'])
-                ->with('message','Invalid Token :)');
+                ->action([LoginController::class, 'showLoginForm'])
+                ->with('message', 'Invalid Token :)');
         }
         //update
         $doctor->update([
@@ -62,6 +64,5 @@ class RegistrationController extends Controller
 
         auth()->guard('doctor')->login($doctor);
         return redirect(RouteServiceProvider::DOCTOR);
-
     }
 }

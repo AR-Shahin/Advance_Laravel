@@ -15,7 +15,6 @@ use function redirect;
 
 class LoginController extends Controller
 {
-
     public function showLoginForm(){
         if(View::exists('patient.auth.login')){
             return view('patient.auth.login');
@@ -43,3 +42,4 @@ class LoginController extends Controller
         return redirect()->action([LoginController::class,'showLoginForm'])->with('message','Log out!');
     }
 }
+

@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Patient\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PatientRegistrationRequest;
-use App\Models\Doctor;
 use App\Models\Patient;
+use App\Notifications\PatientVerificationNotification;
 use function auth;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\View;
@@ -29,6 +29,7 @@ class RegistrationController extends Controller
         $patient->password = $request->input('password');
         $patient->token = $request->input('email');
         if($patient->save()){
+            $patient->notify(new PatientVerificationNotification($patient));
             return redirect()
                 ->action([LoginController::class,'showLoginForm'])
                 ->with('message','Your Account has been Created!. Please verify');
@@ -40,21 +41,21 @@ class RegistrationController extends Controller
     }
 
     public function verifyDoctorAccount($token){
-        $doctor = Doctor::where('verified_token',$token)->first();
-        if(!$doctor){
+        $patient = Patient::where('token',$token)->first();
+        if(!$patient){
             //invalid token
             return redirect()
                 ->action([LoginController::class,'showLoginForm'])
                 ->with('message','Invalid Token :)');
         }
         //update
-        $doctor->update([
-            'verified_token' => null,
-            'verified' => true
+        $patient->update([
+            'token' => null,
+            'is_verified' => true
         ]);
 
-        auth()->guard('doctor')->login($doctor);
-        return redirect(RouteServiceProvider::DOCTOR);
+        auth()->guard('patient')->login($patient);
+        return redirect(RouteServiceProvider::PATIENT);
 
     }
 }
