@@ -2,7 +2,7 @@
 
 namespace App\Events;
 
-use App\Models\Doctor;
+use App\Models\Patient;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -12,18 +12,18 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 use function info;
 
-class DoctorCreatedEvent
+class PatientEmailVerificationEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-    public $doctor;
+    public $patient;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(Doctor $doctor)
+    public function __construct(Patient $patient)
     {
-        $this->doctor = $doctor;
+         $this->patient = $patient;
     }
 
     /**
@@ -33,7 +33,7 @@ class DoctorCreatedEvent
      */
     public function broadcastOn()
     {
-       //  return new PrivateChannel('channel-name');
         return [];
+        // return new PrivateChannel('channel-name');
     }
 }

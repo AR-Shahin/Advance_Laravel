@@ -21,7 +21,7 @@ class CreatePatientsTable extends Migration
             $table->string('password');
             $table->string('phone')->nullable();
             $table->boolean('is_verified')->default(false);
-            $table->string('token');
+            $table->string('token')->nullable();
             $table->timestamp('verified_time')->nullable();
             $table->timestamps();
         });

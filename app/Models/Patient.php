@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\PatientEmailVerificationEvent;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
@@ -20,6 +21,9 @@ class Patient extends Authenticatable
         'verified_time' => 'datetime:Y-m-d h:i:s'
     ];
 
+    protected $dispatchesEvents =[
+        'created' => PatientEmailVerificationEvent::class,
+    ];
     #Mutators
     public function setPasswordAttribute($value){
         $this->attributes['password'] = Hash::make($value);
@@ -27,12 +31,9 @@ class Patient extends Authenticatable
     public function setSlugAttribute($value){
         $this->attributes['slug'] = $value . '-' . uniqid();
     }
-    public function setTokenAttribute($value){
-        $this->attributes['token'] = md5($value) . uniqid();
-    }
     #Accessors
     public function getNameAttribute($value){
-        $this->attributes['name'] = ucwords($value);
+        return ucwords($value);
     }
 
     #Scopes

@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Events\DoctorCreatedEvent;
+use App\Events\PatientEmailVerificationEvent;
 use App\Listeners\DoctorCreatedListener;
+use App\Listeners\PatientEmailVerificationListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -23,6 +25,9 @@ class EventServiceProvider extends ServiceProvider
         DoctorCreatedEvent::class =>[
             DoctorCreatedListener::class,
         ],
+        PatientEmailVerificationEvent::class => [
+            PatientEmailVerificationListener::class
+        ]
     ];
 
     /**

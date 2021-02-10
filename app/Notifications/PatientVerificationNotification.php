@@ -3,6 +3,7 @@
 namespace App\Notifications;
 
 use App\Models\Patient;
+use function dd;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -21,6 +22,7 @@ class PatientVerificationNotification extends Notification implements ShouldQueu
      */
     public function __construct(Patient $patient)
     {
+//        info($this->patient = $patient);
         $this->patient = $patient;
     }
 
@@ -43,8 +45,9 @@ class PatientVerificationNotification extends Notification implements ShouldQueu
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
-            ->line('Dear, ',$this->patient->name)
+              //  info($this->patient->name);
+       return (new MailMessage)
+            ->line('Dear, '. $this->patient->name)
             ->line('Please Verify Your account.')
             ->action('Click Here', route('patient.verify',$this->patient->token))
             ->line('Thank you for using our application!');

@@ -38,8 +38,8 @@ class LoginController extends Controller
     }
 
     public function logout(){
-        Auth::guard('doctor')->logout();
-        return redirect()->action([LoginController::class,'showLoginForm'])->with('message','Log out!');
+        Auth::guard('patient')->logout();
+        return redirect()->route('patient.login')->with('message','Patient Logout.');
     }
 }
 

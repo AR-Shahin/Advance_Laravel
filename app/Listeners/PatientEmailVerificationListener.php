@@ -2,24 +2,25 @@
 
 namespace App\Listeners;
 
-use App\Mail\DoctorVerificationMail;
-use App\Models\Doctor;
+use App\Mail\PatientVerificationMail;
+use App\Models\Patient;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Mail;
 use function info;
+use function print_r;
 
-class DoctorCreatedListener implements ShouldQueue
+class PatientEmailVerificationListener implements ShouldQueue
 {
-    public $doctor;
+    public $patient;
     /**
      * Create the event listener.
      *
      * @return void
      */
-    public function __construct(Doctor $doctor)
+    public function __construct(Patient $patient)
     {
-        $this->doctor = $doctor;
+        $this->patient = $patient;
     }
 
     /**
@@ -30,7 +31,6 @@ class DoctorCreatedListener implements ShouldQueue
      */
     public function handle($event)
     {
-        $email = $event->doctor->email;
-        Mail::to($email)->queue(new DoctorVerificationMail($event->doctor));
+        Mail::to($event->patient->email)->queue(new PatientVerificationMail($event->patient));
     }
 }

@@ -38,9 +38,9 @@ class RegistrationController extends Controller
 
         if($create->save()){
             //send verification link using Event Listener
-            //  event(new DoctorCreatedEvent($create));
+              event(new DoctorCreatedEvent($create));
             //send verification link using Notification
-            $create->notify(new DoctorVerificationNotification($create));
+           $create->notify(new DoctorVerificationNotification($create));
             return redirect()
                 ->action([LoginController::class,'showLoginForm'])
                 ->with('message','Your Account has been Created!. Please verify');
