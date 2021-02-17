@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use function count;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -16,9 +17,10 @@ class CountrySeeder extends Seeder
      */
     public function run()
     {
-        for($i=1;$i<5;$i++) {
+        $countries = ['Bangladesh','India','Pakistan','Dubai','Japan','China','USA'];
+        for($i=0;$i<count($countries);$i++) {
             DB::table('countries')->insert([
-                'name' => strtoupper(Str::random(3)),
+                'name' => $countries[$i]
             ]);
         }
     }

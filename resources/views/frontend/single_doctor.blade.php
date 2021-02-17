@@ -140,7 +140,10 @@
                                 <p class="mb-0">Feedback : <span>{{ $doctor->feedbacks()->count() }}</span></p>
                             </div>
                             <div class="col-4">
-                                <a href="" class="btn btn-sm btn-success"><i class="fa fa-plus mr-1"></i> Appoint Me</a>
+                                <form action="{{ route('appointment',$doctor->id) }}" method="post">
+                                    @csrf
+                                    <button class="btn btn-sm btn-success"><i class="fa fa-plus mr-1"></i> Appoint Me</button>
+                                </form>
                             </div>
                         </div>
                     </div>

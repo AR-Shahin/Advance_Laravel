@@ -13,51 +13,61 @@
 
         <!-- Hero Section -->
         <div id="hero_Section" class="mt-5 pt-5">
-            <div class="row justify-content-center">
-                <div class="col-12 col-md-8">
-                    <div class="input-group">
-                        <select class="custom-select" id="inputGroupSelect04">
-                            <option selected>Search a Doctor.....</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button">Button</button>
+            <form action="{{route('home')}}">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-6">
+                        <div class="input-group">
+                            <select class="custom-select" id="inputGroupSelect04" name="country">
+                                <option value="0">Select Your Country.....</option>
+                                @forelse($countries as $country)
+                                    <option value="{{$country->id}}">{{$country->name}}</option>
+                                @empty
+                                @endforelse
+                            </select>
+                            <select class="custom-select" id="inputGroupSelect04" name="designations">
+                                <option value="0">Search a Designations.....</option>
+                                @forelse($designations as $designation)
+                                    <option value="{{$designation->id}}">{{$designation->name}}</option>
+                                @empty
+                                @endforelse
+                            </select>
+                            <div class="input-group-append">
+                                <button class="btn btn-secondary" type="submit">Search</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
         <hr>
         <div id="doctor_section" class="mt-4">
             <div class="container-fluid">
                 <div class="row" id="viewAllDoctor">
                     @forelse($doctors as $doctor)
-                    <div class="col-12 col-sm-6 col-md-3" style="box-shadow: 1px 2px 5px #ccc">
-                        <div class="card border-secondary ">
-                            <img class="card-img-top w-100" src="{{asset($doctor->avatar)}}" alt="{{$doctor->name}}" height="270px">
-                            <div class="card-body">
-                                <h5 class="card-title">{{$doctor->name}}</h5>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item"><b>Designation : </b> {{$doctor->designation->name ?? 'Null'}}</li>
-                                <li class="list-group-item"><b>Country : </b> {{$doctor->country->name ?? 'Null'}}</li>
-                                <li class="list-group-item">
-                                    <span><b>Ratting [{{$doctor->feedbacks()->count()}}] : </b></span>
-                                    <i class="fa fa-star mr-1"></i>
-                                    <i class="fa fa-star mr-1"></i>
-                                    <i class="fa fa-star mr-1"></i>
-                                    <i class="fa fa-star mr-1"></i>
-                                    <i class="fa fa-star mr-1"></i>
-                                </li>
-                            </ul>
-                            <div class="card-body">
-                                <a href="{{route('doctor.details',$doctor->slug)}}" class="card-link btn btn-sm btn-outline-primary"><i class="fa fa-eye"></i> View</a>
-                                <a href="#" class="card-link btn btn-sm btn-outline-success" style="float: right"><i class="fa fa-plus"></i> Appoint</a>
+                        <div class="col-12 col-sm-6 col-md-3" style="box-shadow: 1px 2px 5px #ccc">
+                            <div class="card border-secondary ">
+                                <img class="card-img-top w-100" src="{{asset($doctor->avatar)}}" alt="{{$doctor->name}}" height="270px">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{$doctor->name}}</h5>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><b>Designation : </b> {{$doctor->designation->name ?? 'Null'}}</li>
+                                    <li class="list-group-item"><b>Country : </b> {{$doctor->country->name ?? 'Null'}}</li>
+                                    <li class="list-group-item">
+                                        <span><b>Ratting [{{$doctor->feedbacks()->count()}}] : </b></span>
+                                        <i class="fa fa-star mr-1"></i>
+                                        <i class="fa fa-star mr-1"></i>
+                                        <i class="fa fa-star mr-1"></i>
+                                        <i class="fa fa-star mr-1"></i>
+                                        <i class="fa fa-star mr-1"></i>
+                                    </li>
+                                </ul>
+                                <div class="card-body">
+                                    <a href="{{route('doctor.details',$doctor->slug)}}" class="card-link btn btn-sm btn-outline-primary"><i class="fa fa-eye"></i> View</a>
+                                    <a href="#" class="card-link btn btn-sm btn-outline-success" style="float: right"><i class="fa fa-plus"></i> Appoint</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     @empty
                     @endforelse
                 </div>

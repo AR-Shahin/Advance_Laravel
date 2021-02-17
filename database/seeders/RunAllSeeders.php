@@ -14,7 +14,7 @@ class RunAllSeeders extends Seeder
     public function run()
     {
         $this->call([
-            CountrySeeder::class, DesignationSeeder::class
+            CountrySeeder::class, DesignationSeeder::class,DoctorSeeder::class
         ]);
     }
 }
