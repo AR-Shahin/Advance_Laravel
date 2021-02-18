@@ -2,7 +2,6 @@
 @section('main_section')
     <div id="wrapper">
         @include('doctor.includes.sidebar')
-        <div id="app">
         <div id="content-wrapper" class="d-flex flex-column" >
             <!-- Main Content -->
             <div id="content">
@@ -24,7 +23,6 @@
 
             </div>
             <!-- End of Main Content -->
-        </div>
         </div>
     </div>
 

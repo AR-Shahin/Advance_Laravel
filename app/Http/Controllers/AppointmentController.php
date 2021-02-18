@@ -17,7 +17,6 @@ class AppointmentController extends Controller
             'patient_id' => Auth::guard('patient')->id(),
             'appointment_time' => date('Y-m-d')
         ]);
-
         return redirect()->route('patient.dashboard');
     }
 }
