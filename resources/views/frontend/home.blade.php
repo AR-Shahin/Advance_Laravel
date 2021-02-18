@@ -19,15 +19,15 @@
                         <div class="input-group">
                             <select class="custom-select" id="inputGroupSelect04" name="country">
                                 <option value="0">Select Your Country.....</option>
-                                @forelse($countries as $country)
-                                    <option value="{{$country->id}}">{{$country->name}}</option>
+                                @forelse(\App\Models\Country::select('id','name')->latest()->get() as $country)
+                                    <option @if($country_id == $country->id) selected @endif value="{{$country->id}}">{{$country->name}}</option>
                                 @empty
                                 @endforelse
                             </select>
                             <select class="custom-select" id="inputGroupSelect04" name="designations">
                                 <option value="0">Search a Designations.....</option>
-                                @forelse($designations as $designation)
-                                    <option value="{{$designation->id}}">{{$designation->name}}</option>
+                                @forelse(\App\Models\Designations::select('id','name')->latest()->get() as $designation)
+                                    <option @if($designations_id == $designation->id) selected @endif  value="{{$designation->id}}">{{$designation->name}}</option>
                                 @empty
                                 @endforelse
                             </select>

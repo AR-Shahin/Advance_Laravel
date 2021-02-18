@@ -2,7 +2,6 @@
 @section('main_section')
     <div id="wrapper">
         @include('patient.includes.sidebar')
-        <div id="app">
             <div id="content-wrapper" class="d-flex flex-column" >
                 <!-- Main Content -->
                 <div id="content">
@@ -26,7 +25,6 @@
                 <!-- End of Main Content -->
             </div>
         </div>
-    </div>
 
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

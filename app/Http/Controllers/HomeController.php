@@ -19,23 +19,40 @@ class HomeController extends Controller
     }
 
     public function index(Request $request){
+        //return $request->designations;
+//        $doctor = $doctor->when($request->country, function($doctor) use($request){
+//            return $doctor->where('country_id',$request->country);
+//        })
+//            ->when($request->designation, function($doctor) use($request){
+//                return $doctor->where('designation_id',$request->designation);
+//            });
 
-         $request->input('country_id');
-        $this->data['doctors'] = $this->doctor->getAllDoctor();
-        $this->data['countries'] = Country::select('id','name')->latest()->get();
-        $this->data['designations'] = Designations::select('id','name')->latest()->get();
+
+        $doctor = $this->doctor->getAllDoctor();
+        $doctor = $doctor->when($request->country,function ($doctor) use($request){
+            return $doctor->where('country_id',$request->country);
+        })->when($request->designations, function ($doctor) use($request){
+            return $doctor->where('designation_id',$request->designations);
+        });
+
         if(View::exists('frontend.home')){
-            return view('frontend.home',$this->data);
+            return view('frontend.home',[
+                'doctors' =>   $doctor,
+                'country_id' => $request->country ?? 0,
+                'designations_id' => $request->designations ?? 0,
+
+
+            ]);
         }
         abort(404);
     }
 
     public function getDoctorDetails(Doctor $slug){
-       if(View::exists('frontend.single_doctor')){
-           return \view('frontend.single_doctor',[
-               'doctor' => $this->doctor->getDoctorDetails($slug)
-           ]);
-       }
+        if(View::exists('frontend.single_doctor')){
+            return \view('frontend.single_doctor',[
+                'doctor' => $this->doctor->getDoctorDetails($slug)
+            ]);
+        }
 
     }
 }

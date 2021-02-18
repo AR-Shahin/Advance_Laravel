@@ -41,4 +41,8 @@ class Patient extends Authenticatable
         return $query->where('is_verified',1);
     }
 
+    public function appointments(){
+        return $this->hasMany(Appointment::class);
+    }
+
 }
