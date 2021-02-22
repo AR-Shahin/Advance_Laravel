@@ -40,7 +40,18 @@
         </div>
     </li>
 
-
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item ">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#appointments" aria-expanded="true" aria-controls="collapsePages">
+            <i class="fas fa-fw fa-users"></i>
+            <span>Appointments</span>
+        </a>
+        <div id="appointments" class="collapse " aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{route('doctor.appointments')}}">Appointment</a>
+            </div>
+        </div>
+    </li>
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 

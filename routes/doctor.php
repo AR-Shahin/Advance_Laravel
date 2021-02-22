@@ -30,6 +30,11 @@ Route::name('doctor.')->namespace('Doctor')->prefix('doctor')->group(function ()
         Route::get('update-profile','ProfileController@showUpdateProfileForm')->name('update-profile');
         Route::patch('update-profile','ProfileController@updateProfile')->name('update-profile');
 
+        #Appointment Routes
+        Route::get('appointments','AppointmentController@index')->name('appointments');
+        Route::get('approve/appointment/{id}/patient/{patient}','AppointmentController@approveAppointment')->name('approve.appointment');
+        Route::get('seen/appointment/{id}/patient/{patient}','AppointmentController@seenAppointment')->name('seen.appointment');
+
     });
 
 
