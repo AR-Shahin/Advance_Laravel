@@ -34,6 +34,7 @@ Route::name('doctor.')->namespace('Doctor')->prefix('doctor')->group(function ()
         Route::get('appointments','AppointmentController@index')->name('appointments');
         Route::get('approve/appointment/{id}/patient/{patient}','AppointmentController@approveAppointment')->name('approve.appointment');
         Route::get('seen/appointment/{id}/patient/{patient}','AppointmentController@seenAppointment')->name('seen.appointment');
+        Route::get('cancel/appointment/{id}/patient/{patient}','AppointmentController@cancelAppointment')->name('cancel.appointment');
 
     });
 

@@ -38,7 +38,7 @@ class AppointmentController extends Controller
 
     public function seenAppointment($id, $patient_id)
     {
-       // return $id. $patient_id;
+        // return $id. $patient_id;
         if (Appointment::find($id)->update(['status' => 2])) {
             $patient = Patient::find($patient_id);
             $key = 'seen';
@@ -49,6 +49,15 @@ class AppointmentController extends Controller
             ];
             $patient->notify(new PatientAppointNotification($key, $details));
             $this->setSuccessMessage('Appoint Seen Successfully!');
+            return redirect()->back();
+        }
+    }
+
+    public function cancelAppointment($id, $patient_id)
+    {
+        // return $id. $patient_id;
+        if (Appointment::find($id)->update(['status' => 3])) {
+            $this->setSuccessMessage('Appoint Cancel Successfully!');
             return redirect()->back();
         }
     }

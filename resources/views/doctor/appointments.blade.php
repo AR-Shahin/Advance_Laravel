@@ -33,7 +33,7 @@
                         <td>
                             @if($patient->status == 0)
                                 <a class="btn btn-sm btn-warning" href="{{route('doctor.approve.appointment',['id' => $patient->id, 'patient' => $patient->patient->id])}}">Approve</a>
-                                <a class="btn btn-sm btn-danger" href="">Cancel</a>
+                                <a class="btn btn-sm btn-danger" href="{{route('doctor.cancel.appointment',['id' => $patient->id, 'patient' => $patient->patient->id])}}">Cancel</a>
                             @elseif($patient->status == 1)
                                 <a class="btn btn-sm btn-success" href="{{route('doctor.seen.appointment',['id' => $patient->id, 'patient' => $patient->patient->id])}}">Seen</a>
                             @endif
