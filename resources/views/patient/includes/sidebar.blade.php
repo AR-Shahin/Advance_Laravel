@@ -23,7 +23,11 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
-
+    <li class="nav-item">
+        <a class="nav-link" href="{{url('/')}}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>View Doctors's</span></a>
+    </li>
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item ">

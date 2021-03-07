@@ -137,7 +137,7 @@
                             <div class="col-8">
                                 <h1 class="mb-0">{{$doctor->name}}</h1>
                                 <h6><em> {{ $doctor->designation->name ?? 'No designation' }}</em></h6>
-                                <p class="mb-0">Feedback : <span>{{ $doctor->feedbacks()->count() }}</span></p>
+                                <p class="mb-0">Feedback : <span>{{ ceil($doctor->feedbacks()->avg('ratting')) }} (out of 5)</span></p>
                             </div>
                             <div class="col-4">
                                 <form action="{{ route('appointment',$doctor->id) }}" method="post">
@@ -271,7 +271,57 @@
                                     @endforelse
                                 </table>
                             </div>
-                            <div class="tab-pane fade" id="Feedback" role="tabpanel" aria-labelledby="contact-tab">...</div>
+                            <div class="tab-pane fade" id="Feedback" role="tabpanel" aria-labelledby="contact-tab">
+                                <div class="row">
+                                    <div class="col-8">
+                                        <h5 class="text-primary"><b>All Feedback's</b></h5>
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <th>SL</th>
+                                                <th>Patient Name</th>
+                                                <th>Comment</th>
+                                                <th>Commented Date</th>
+                                            </tr>
+                                            @forelse($doctor->feedbacks as $key => $feedback)
+                                                <tr>
+                                                    <td>{{++$key}}</td>
+                                                    <td>{{$feedback->patient->name}}</td>
+                                                    <td>{{$feedback->comment}}</td>
+                                                    <td>{{$feedback->created_at}}</td>
+                                                </tr>
+                                            @empty
+                                            @endforelse
+                                        </table>
+                                    </div>
+                                    <div class="col-4">
+                                        <h5 class="text-primary"><b>Give Feedback</b></h5>
+                                        <form action="" id="feedbackForm">
+                                            <div class="form-group">
+                                                <h6>Score : </h6>
+                                                <select name="ratting" id="ratting" class="form-control">
+                                                    <option value="">Choose a Score</option>
+                                                    <option value="5">Excellent</option>
+                                                    <option value="4">Good</option>
+                                                    <option value="3">Medium</option>
+                                                    <option value="2">Not Bad</option>
+                                                    <option value="1">Not Satisfied</option>
+                                                </select>
+                                            </div>
+                                            <input type="hidden" name="doctor_id" value="{{$doctor->id}}">
+                                            <div class="form-group">
+                                                <h6>Comment : </h6>
+                                                  <textarea name="comment" id="comment" cols="30" rows="2"
+                                                            class="form-control"></textarea>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <button class="btn btn-block btn-success"> Submit </button>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -280,3 +330,39 @@
         </div>
     </div>
 @stop
+
+@push('script')
+<script>
+    $('body').on('submit','#feedbackForm',function (e) {
+        e.preventDefault();
+        if($('#ratting').val() == '' || $('#comment').val() == ''){
+            alert('Field Must not be Empty');
+            return;
+        }
+
+        axios({
+            method : 'post',
+            url : "{{route('feedback')}}",
+            data : $(this).serialize(),
+        }).then(function (res) {
+            if(res.data === 'NOT_LOGIN'){
+                window.location = "{{route('patient.login')}}";
+            }else if(res.data === 'NOT_INSERT'){
+                alert('Something is Wrong!');
+            }else if(res.data === 'INSERT_FEEDBACK'){
+                alert('Feedback Added Successfully!');
+                $('#comment').val('');
+                $('#ratting').val('');
+            }else if('ALREADY_GIVEN' === res.data){
+                alert('You are not able to give feedback. Feedback already taken!');
+                $('#comment').val('');
+                $('#ratting').val('');
+            }
+        })
+            .catch(function (err) {
+                console.log(err)
+            })
+    });
+
+</script>
+@endpush
