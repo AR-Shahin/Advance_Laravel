@@ -17,7 +17,9 @@ Route::namespace('Patient')->name('patient.')->prefix('patient')->group(function
         Route::post('login','LoginController@loginProcess')->name('login');
         #Forgot password
         Route::get('forgot-password','ForgotPasswordController@index')->name('forgot-password');
-        Route::get('reset-password','ForgotPasswordController@resetPasswordView')->name('reset-password');
+        Route::post('forgot-password','ForgotPasswordController@sentResetPassToken')->name('forgot-password');
+        Route::get('reset--password/{token}','ForgotPasswordController@resetPasswordView')->name('reset--password');
+        Route::post('reset-password','ForgotPasswordController@updateResetPassword')->name('reset-password');
     });
 
     //Auth Routes

@@ -25,9 +25,10 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-2">Patient Forgot Your Password?</h1>
                                     </div>
-                                    <form class="user">
+                                    <form class="user" method="post" action="{{route('patient.forgot-password')}}">
+                                        @csrf
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                                            <input type="email" class="form-control form-control-user @error('email') is-invalid @enderror" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email">  <span class="text-danger">{{($errors->has('email'))? ($errors->first('email')) : ''}}</span>
                                         </div>
                                         <button class="btn btn-primary btn-user btn-block">
                                             Reset Password

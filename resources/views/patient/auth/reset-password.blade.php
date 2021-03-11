@@ -25,15 +25,18 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-2">Reset Your Password?</h1>
                                     </div>
-                                    <form class="user">
+                                    <form class="user" method="post" action="{{route('patient.reset-password')}}">
+                                        @csrf
+                                        <input type="hidden" name="token" value="{{$token}}">
+                                        {{--<div class="form-group">--}}
+                                            {{--<input type="email" class="form-control form-control-user @error('email') is-invalid @enderror" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email">  <span class="text-danger">{{($errors->has('email'))? ($errors->first('email')) : ''}}</span>--}}
+                                {{--</div>--}}
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
-                                </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter New Password...">
+                                            <input type="password" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter New Password..." name="password"><span class="text-danger">{{($errors->has('password'))? ($errors->first('password')) : ''}}</span>
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Password Again...">
+                                            <input type="password" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Password Again..." name="password_confirmation">
+                                            <span class="text-danger">{{($errors->has('password_confirmation'))? ($errors->first('password_confirmation')) : ''}}</span>
                                         </div>
                                         <button class="btn btn-primary btn-user btn-block">
                                             Update Password
