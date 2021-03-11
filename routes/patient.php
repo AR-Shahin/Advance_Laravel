@@ -15,6 +15,9 @@ Route::namespace('Patient')->name('patient.')->prefix('patient')->group(function
         Route::post('register','RegistrationController@registrationProcess')->name('register');
         Route::get('verify/{token}','RegistrationController@verifyPatientAccount')->name('verify');
         Route::post('login','LoginController@loginProcess')->name('login');
+        #Forgot password
+        Route::get('forgot-password','ForgotPasswordController@index')->name('forgot-password');
+        Route::get('reset-password','ForgotPasswordController@resetPasswordView')->name('reset-password');
     });
 
     //Auth Routes
