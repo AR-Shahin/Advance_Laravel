@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers;
 use App\Models\Doctor;
 use Illuminate\Support\Facades\Route;
 
@@ -14,4 +14,4 @@ Route::post('appointment/{id}','AppointmentController@storeAppointment')->name('
 Route::post('feedback','FeedbackController@storeFeedback')->name('feedback');
 
 
-Route::get('products',[ProductController::class,'index']);
+Route::resource('products',ProductController::class)->except(['edit','destroy','update']);
