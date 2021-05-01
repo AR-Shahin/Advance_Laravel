@@ -27,7 +27,7 @@ class PostCreated
     public function handle($event)
     {
         cache()->forget('products');
-        $products = Product::with('category')->get();
+        $products = Product::with('category')->latest()->get();
         cache()->forever('products',$products);
     }
 }

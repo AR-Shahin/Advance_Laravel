@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->foreignId('category_id');
             $table->text('text');
+            $table->float('price')->default(50);
             $table->timestamps();
         });
     }

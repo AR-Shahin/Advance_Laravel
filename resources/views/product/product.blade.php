@@ -8,6 +8,7 @@
     @foreach ($products as $product)
         <li>{{ $loop->iteration }}</li>
         <li>{{ $product->category->name }}</li>
+        <li>{{ $product->name }}</li>
         <hr>
     @endforeach
     </ul>
