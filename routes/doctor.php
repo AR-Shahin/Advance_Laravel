@@ -37,7 +37,7 @@ Route::name('doctor.')->namespace('Doctor')->prefix('doctor')->group(function ()
         Route::get('cancel/appointment/{id}/patient/{patient}','AppointmentController@cancelAppointment')->name('cancel.appointment');
 
     });
-
-
 });
+
+
 

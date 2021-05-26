@@ -52,6 +52,11 @@
             </div>
         </div>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('role.index')}}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Roles and Permissions</span></a>
+    </li>
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 
