@@ -1,12 +1,13 @@
 @extends('layouts.app')
 @section('title')
-    Roles and Permissions
+    User
 @endsection
 @section('content')
 
 <div class="container mt-4">
-    <h2 class="text-center">Manage Roles and Permissions</h2>
+    <h2 class="text-center">Manage User</h2>
     <a href="{{ route('role.create') }}" class="btn btn-success btn-sm">Add New Role</a>
+    <a href="{{ route('user.index') }}" class="btn btn-success btn-sm">User</a>
     <hr>
     <form action="{{ route('user.store') }}" method="POST">
         @csrf

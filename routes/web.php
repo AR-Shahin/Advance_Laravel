@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers;
+use App\Http\Controllers\DropZoneImageController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Models\Doctor;
@@ -19,3 +20,9 @@ Route::resource('products',ProductController::class)->except(['edit','destroy','
 //role and permissions routes
 Route::resource('role', 'RoleController');
 Route::resource('user', 'UserController');
+
+//DropZone
+Route::get('dropzone',[DropZoneImageController::class,'index']);
+Route::post('dropzone', [DropZoneImageController::class, 'store'])->name('dropzone');
+Route::post('delete', [DropZoneImageController::class, 'delete'])->name('dropzone.delete');
+

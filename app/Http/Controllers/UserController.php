@@ -9,6 +9,11 @@ use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
+    function index()
+    {
+        $users =   User::get();
+        return view('user.index', compact('users'));
+    }
     public function create(){
         $roles = Role::all();
         return view('user.create',compact('roles'));
