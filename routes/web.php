@@ -3,6 +3,7 @@
 use App\Http\Controllers;
 use App\Http\Controllers\CropController;
 use App\Http\Controllers\DropZoneImageController;
+use App\Http\Controllers\LoadMoreDataController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Models\Doctor;
@@ -31,3 +32,7 @@ Route::post('delete', [DropZoneImageController::class, 'delete'])->name('dropzon
 Route::get('crop', [CropController::class, 'index']);
 Route::post('crop', [CropController::class, 'store'])->name('crop.store');
 
+//Load More Data
+
+Route::get('load-data',[LoadMoreDataController::class,'index']);
+Route::post('load-data', [LoadMoreDataController::class, 'loadMoreData'])->name('load-data');
