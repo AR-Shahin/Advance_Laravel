@@ -31,6 +31,9 @@
                                 @empty
                                 @endforelse
                             </select>
+
+                                <input type="text" class="form-control" name="visit" placeholder="Enter Visit Fees" value="{{ $visit }}">
+
                             <div class="input-group-append">
                                 <button class="btn btn-secondary" type="submit">Search</button>
                             </div>

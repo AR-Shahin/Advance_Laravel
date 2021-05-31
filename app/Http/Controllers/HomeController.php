@@ -33,6 +33,8 @@ class HomeController extends Controller
             return $doctor->where('country_id',$request->country);
         })->when($request->designations, function ($doctor) use($request){
             return $doctor->where('designation_id',$request->designations);
+        })->when($request->visit, function ($doctor) use ($request) {
+            return $doctor->where('visit_fee', $request->visit);
         });
 
         if(View::exists('frontend.home')){
@@ -40,7 +42,7 @@ class HomeController extends Controller
                 'doctors' =>   $doctor,
                 'country_id' => $request->country ?? 0,
                 'designations_id' => $request->designations ?? 0,
-
+                'visit' => $request->visit ?? 00
 
             ]);
         }
