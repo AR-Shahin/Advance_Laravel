@@ -14,19 +14,20 @@ use function event;
 use Illuminate\Support\Facades\View;
 use function md5;
 use function redirect;
-use const true;
 use function uniqid;
 
 class RegistrationController extends Controller
 {
-    public function showRegistrationForm(){
-        if(View::exists('patient.auth.register')){
+    public function showRegistrationForm()
+    {
+        if (View::exists('patient.auth.register')) {
             return view('patient.auth.register');
         }
         abort(404);
     }
 
-    public function registrationProcess(PatientRegistrationRequest $request){
+    public function registrationProcess(PatientRegistrationRequest $request)
+    {
         //return $request;
         $patient = new Patient();
         $patient->name = $request->input('name');
@@ -34,29 +35,29 @@ class RegistrationController extends Controller
         $patient->email = $request->input('email');
         $patient->password = $request->input('password');
         $patient->token = md5($request->input('email')) . uniqid();
-        if($patient->save()){
-           // return $patient;
+        if ($patient->save()) {
+            // return $patient;
             event(new PatientEmailVerificationEvent($patient));
-           // $patient->notify(new PatientVerificationNotification($patient));
+            // $patient->notify(new PatientVerificationNotification($patient));
             return redirect()
-                ->action([LoginController::class,'showLoginForm'])
-                ->with('message','Your Account has been Created!. Please verify');
-        }else{
+                ->action([LoginController::class, 'showLoginForm'])
+                ->with('message', 'Your Account has been Created!. Please verify');
+        } else {
             return redirect()
-                ->action([LoginController::class,'showLoginForm'])
-                ->with('message','Something is Wrong.');
+                ->action([LoginController::class, 'showLoginForm'])
+                ->with('message', 'Something is Wrong.');
         }
     }
 
-    public function verifyPatientAccount($token){
-       $patient = Patient::whereToken($token)->first();
-        if(!$patient){
+    public function verifyPatientAccount($token)
+    {
+        $patient = Patient::whereToken($token)->first();
+        if (!$patient) {
             //invalid token
             return redirect()
-                ->action([LoginController::class,'showLoginForm'])
-                ->with('message','Invalid Token :)');
-        }
-        ;
+                ->action([LoginController::class, 'showLoginForm'])
+                ->with('message', 'Invalid Token :)');
+        };
         //update
         $patient->update([
             'token' => null,
@@ -66,6 +67,5 @@ class RegistrationController extends Controller
 
         auth()->guard('patient')->login($patient);
         return redirect(RouteServiceProvider::PATIENT);
-
     }
 }

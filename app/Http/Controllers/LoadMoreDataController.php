@@ -22,10 +22,10 @@ class LoadMoreDataController extends Controller
             $data = Product::with('category')
                     ->where('id','<',$request->id)
                     ->orderBy('id','DESC')
-                    ->limit(10)
+                    ->limit(2)
                     ->get();
         } else {
-            $data = Product::with('category')->limit(10)->orderBy('id', 'DESC')->get();
+            $data = Product::with('category')->limit(2)->orderBy('id', 'DESC')->get();
         }
 
         $output = '';
@@ -44,12 +44,12 @@ class LoadMoreDataController extends Controller
                 </div>
                 ';
                 $last_id = $row->id ;
-                info($last_id);
+                //info($last_id);
             }
             $output .= '
        <div id="load_more">
         <button type="button" name="load_more_button" class="btn btn-success form-control" data-id="' . $last_id . '" id="load_more_button">Load More</button>
-        <span>Last : '.$last_id.'</span>
+
        </div>
        ';
         } else {

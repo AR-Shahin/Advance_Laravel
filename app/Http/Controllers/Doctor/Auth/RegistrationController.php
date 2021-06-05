@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Str;
 use function md5;
 use function redirect;
-use const true;
 use function uniqid;
 
 class RegistrationController extends Controller
