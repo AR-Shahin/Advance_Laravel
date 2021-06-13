@@ -12,7 +12,13 @@ use App\Http\Controllers\LoadMoreDataController;
 use App\Http\Controllers\DropZoneImageController;
 use App\Http\Controllers\ScrollInfiniteController;
 
+Route::get('component', function () {
 
+    return view('welcome', [
+        'data' => [10, 20, 30, 40],
+        'name' => 'Shahin,',
+    ]);
+});
 Route::get('/', 'HomeController@index')->name('home');
 //view single doctor
 Route::get('view-doctor/{slug}', 'HomeController@getDoctorDetails')->name('doctor.details');
