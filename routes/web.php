@@ -11,6 +11,11 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoadMoreDataController;
 use App\Http\Controllers\DropZoneImageController;
 use App\Http\Controllers\ScrollInfiniteController;
+use Illuminate\Support\Facades\Log;
+
+Route::get('log', function () {
+    Log::info("Hello I Error!");
+});
 
 Route::get('component', function () {
 
