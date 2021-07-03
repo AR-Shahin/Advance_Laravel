@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Image;
 use Illuminate\Http\Request;
 
@@ -33,5 +34,34 @@ class DropZoneImageController extends Controller
         return $filename;
     }
 
-}
+    public function dropZoneWithData()
+    {
+        return view('dropzone.with-data');
+    }
 
+    public function dropZoneWithDataStore(Request $request)
+    {
+        $request->validate([
+            'name' => ['required'],
+            'email' => 'required',
+        ]);
+        info('ok');
+        $files = $request->file('file');
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => 555
+        ]);
+        foreach ($files as $file) {
+            $imageName = $file->getClientOriginalName();
+            $file->move(public_path('images'), $imageName);
+            $im = new Image();
+            $im->name = $user->name;
+            $im->roll = 111;
+            $im->path = time() . '.' . $imageName;
+            $im->save();
+        }
+
+        return back();
+    }
+}

@@ -60,3 +60,9 @@ Route::get('macro', function () {
     //return Arr::multiplyWithN([10, 20, 30], 2);
     return Arr::test(5);
 });
+
+
+// Dropzone With data
+
+Route::get('drop-data', [DropZoneImageController::class, 'dropZoneWithData']);
+Route::post('drop-data', [DropZoneImageController::class, 'dropZoneWithDataStore']);
