@@ -14,22 +14,20 @@ class VueController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->ajax()) {
-            return response()->json(Vue::latest()->get());
-        }
+        return response()->json(Vue::latest()->get());
+        // if ($request->ajax()) {
+        //     return response()->json(Vue::latest()->get());
+        // }
     }
 
-
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        $data =  Vue::create($request->title);
+        $request->validate([
+            'title' => ['required', 'unique:vues']
+        ]);
+        $data =  Vue::create([
+            'title' => $request->title
+        ]);
         return response()->json($data);
     }
 
@@ -44,8 +42,19 @@ class VueController extends Controller
      * @param  \App\Models\Vue  $vue
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Vue $vue)
+    public function destroy(Vue $id)
     {
-        $vue->delete();
+        $id->delete();
+    }
+
+    public function toggle(Request $request, Vue $id)
+    {
+        if ($request->flag === 'done') {
+            $id->isDone = true;
+        }
+        if ($request->flag === 'undo') {
+            $id->isDone = false;
+        }
+        $id->save();
     }
 }

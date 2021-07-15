@@ -15,3 +15,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('todos', [VueController::class, 'index']);
 Route::post('todos', [VueController::class, 'store']);
+Route::post('todo-toggle/{id}', [VueController::class, 'toggle']);
+Route::delete('todos/{id}', [VueController::class, 'destroy']);
